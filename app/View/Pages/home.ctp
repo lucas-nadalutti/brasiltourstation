@@ -20,8 +20,7 @@ if (Configure::read('debug') > 0):
 	Debugger::checkSecurityKeys();
 endif;
 ?>
-<h1><?php getenv('SECURITY_SALT'); ?></h1>
-<h1><?php print_r($_ENV); ?></h1>
+<h1><?php echo getenv('SECURITY_SALT'); ?></h1>
 <?php if (file_exists(WWW_ROOT . 'css' . DS . 'cake.generic.css')): ?>
 	<p id="url-rewriting-warning" style="background-color:#e32; color:#fff;">
 		<?php echo __d('cake_dev', 'URL rewriting is not properly configured on your server.'); ?>
