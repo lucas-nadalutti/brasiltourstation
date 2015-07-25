@@ -68,10 +68,10 @@
  */
 
 if (!defined('RDS_HOSTNAME')) {
-  define('RDS_HOSTNAME', $_SERVER['RDS_HOSTNAME']);
-  define('RDS_USERNAME', $_SERVER['RDS_USERNAME']);
-  define('RDS_PASSWORD', $_SERVER['RDS_PASSWORD']);
-  define('RDS_DB_NAME', $_SERVER['RDS_DB_NAME']);
+	define('RDS_HOSTNAME', getenv('RDS_HOSTNAME'));
+	define('RDS_USERNAME', getenv('RDS_USERNAME'));
+	define('RDS_PASSWORD', getenv('RDS_PASSWORD'));
+	define('RDS_DB_NAME', getenv('RDS_DB_NAME'));
 }
 
 
