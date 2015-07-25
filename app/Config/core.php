@@ -1,4 +1,10 @@
 <?php
+
+// Create core settings if in local environment
+
+include 'core-dev.php';
+
+
 /**
  * This is core configuration file.
  *
@@ -31,7 +37,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	Configure::write('debug', getenv('DEBUG') or 2);
+	Configure::write('debug', getenv('DEBUG'));
 
 /**
  * Configure the Error handler used to handle errors for your application. By default
@@ -222,12 +228,12 @@
 /**
  * A random string used in security hashing methods.
  */
-	Configure::write('Security.salt', getenv('SECURITY_SALT') or '132hnASD2o8ASj43nA932lads1');
+	Configure::write('Security.salt', getenv('SECURITY_SALT'));
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-	Configure::write('Security.cipherSeed', getenv('SECURITY_CIPHER_SEED') or '9823432749523435634795');
+	Configure::write('Security.cipherSeed', getenv('SECURITY_CIPHER_SEED'));
 
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).

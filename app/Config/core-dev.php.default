@@ -1,0 +1,5 @@
+<?php
+	
+	putenv('DEBUG=2');
+	putenv('SECURITY_SALT=132hnASD2o8ASj43nA932lads1');
+	putenv('SECURITY_CIPHER_SEED=9823432749523435634795');

@@ -1,4 +1,10 @@
 <?php
+
+// Create database settings if in local environment
+
+include 'database-dev.php';
+
+
 /**
  *
  *
@@ -67,11 +73,17 @@
  * A key/value array of driver specific connection options.
  */
 
+
 if (!defined('RDS_HOSTNAME')) {
 	define('RDS_HOSTNAME', getenv('RDS_HOSTNAME'));
 	define('RDS_USERNAME', getenv('RDS_USERNAME'));
 	define('RDS_PASSWORD', getenv('RDS_PASSWORD'));
-	define('RDS_DB_NAME', getenv('RDS_DB_NAME'));
+	define('RDS_NAME', getenv('RDS_NAME'));
+
+	define('TEST_DB_HOSTNAME', getenv('TEST_DB_HOSTNAME'));
+	define('TEST_DB_USERNAME', getenv('TEST_DB_USERNAME'));
+	define('TEST_DB_PASSWORD', getenv('TEST_DB_PASSWORD'));
+	define('TEST_DB_NAME', getenv('TEST_DB_NAME'));
 }
 
 
@@ -83,7 +95,7 @@ class DATABASE_CONFIG {
 	    'host' => RDS_HOSTNAME,
 	    'login' => RDS_USERNAME,
 	    'password' => RDS_PASSWORD,
-	    'database' => RDS_DB_NAME,
+	    'database' => RDS_NAME,
 	    'prefix' => '',
 	    //'encoding' => 'utf8',
 	);
@@ -91,10 +103,10 @@ class DATABASE_CONFIG {
 	public $test = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'user',
-		'password' => 'password',
-		'database' => 'test_database_name',
+	    'host' => TEST_DB_HOSTNAME,
+	    'login' => TEST_DB_USERNAME,
+	    'password' => TEST_DB_PASSWORD,
+	    'database' => TEST_DB_NAME,
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
