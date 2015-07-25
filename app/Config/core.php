@@ -6,8 +6,6 @@ if (is_file(dirname(__FILE__) . '/core-dev.php')) {
 	include 'core-dev.php';
 }
 
-echo 'AAAAA';
-
 /**
  * This is core configuration file.
  *
