@@ -2,7 +2,9 @@
 
 // Create database settings if in local environment
 
-include 'database-dev.php';
+if (is_file(dirname(__FILE__) . '/database-dev.php')) {
+	include 'database-dev.php';
+}
 
 
 /**
@@ -85,7 +87,6 @@ if (!defined('RDS_HOSTNAME')) {
 	define('TEST_DB_PASSWORD', getenv('TEST_DB_PASSWORD'));
 	define('TEST_DB_NAME', getenv('TEST_DB_NAME'));
 }
-
 
 class DATABASE_CONFIG {
 

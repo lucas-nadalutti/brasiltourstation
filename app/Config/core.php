@@ -2,7 +2,9 @@
 
 // Create core settings if in local environment
 
-include 'core-dev.php';
+if (is_file(dirname(__FILE__) . '/core-dev.php')) {
+	include 'core-dev.php';
+}
 
 
 /**
