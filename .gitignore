@@ -2,6 +2,8 @@
 #################################################
 /app/Config/core-dev.php
 /app/Config/database-dev.php
+/app/Plugin
+/app/Vendor
 /app/tmp
 /lib/Cake/Console/Templates/skel/tmp/
 /plugins
@@ -27,8 +29,6 @@ Icon?
 ehthumbs.db
 Thumbs.db
 
-# AWS
-.elasticbeanstalk/
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
