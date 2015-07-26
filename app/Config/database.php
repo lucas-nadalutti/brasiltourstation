@@ -80,7 +80,7 @@ if (!defined('RDS_HOSTNAME')) {
 	define('RDS_HOSTNAME', getenv('RDS_HOSTNAME'));
 	define('RDS_USERNAME', getenv('RDS_USERNAME'));
 	define('RDS_PASSWORD', getenv('RDS_PASSWORD'));
-	define('RDS_NAME', getenv('RDS_NAME'));
+	define('RDS_DB_NAME', getenv('RDS_DB_NAME'));
 
 	define('TEST_DB_HOSTNAME', getenv('TEST_DB_HOSTNAME'));
 	define('TEST_DB_USERNAME', getenv('TEST_DB_USERNAME'));
@@ -90,13 +90,19 @@ if (!defined('RDS_HOSTNAME')) {
 
 class DATABASE_CONFIG {
 
+	public function __construct() {
+		if (stristr(env('HTTP_USER_AGENT'), 'selenium')) {
+			$this->default = $this->test;
+		}
+	}
+
 	public $default = array(
 	    'datasource' => 'Database/Mysql',
 	    'persistent' => false,
 	    'host' => RDS_HOSTNAME,
 	    'login' => RDS_USERNAME,
 	    'password' => RDS_PASSWORD,
-	    'database' => RDS_NAME,
+	    'database' => RDS_DB_NAME,
 	    'prefix' => '',
 	    //'encoding' => 'utf8',
 	);
