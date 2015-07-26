@@ -60,6 +60,15 @@ Cache::config('default', array('engine' => 'File'));
  *
  */
 
+// Correctly pluralize HABTM models
+Inflector::rules('plural', array(
+	'irregular' => array(
+		'attraction_hotel' => 'attractions_hotels',
+		'attraction_package' => 'attractions_packages',
+		'attraction_tag' => 'attractions_tags',
+	)
+));
+
 /**
  * Plugins need to be loaded manually, you can either load them one by one or all of them in a single call
  * Uncomment one of the lines below, as you need. Make sure you read the documentation on CakePlugin to use more
