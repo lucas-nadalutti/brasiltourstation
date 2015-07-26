@@ -3,7 +3,7 @@
 	putenv('RDS_HOSTNAME=<hostname>');
 	putenv('RDS_USERNAME=<username>');
 	putenv('RDS_PASSWORD=<password>');
-	putenv('RDS_NAME=<database_name>');
+	putenv('RDS_DB_NAME=<database_name>');
 	
 	putenv('TEST_DB_HOSTNAME=<hostname>');
 	putenv('TEST_DB_USERNAME=<username>');
