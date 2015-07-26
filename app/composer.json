@@ -3,10 +3,12 @@
 		"vendor-dir": "Vendor"
 	},
 	"require": {
-		"cakedc/migrations" : "2.4.*"
+		"cakedc/migrations" : "2.4.*",
+		"masterminds/html5": "2.*"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "4.7.*",
+		"facebook/webdriver": "1.0.*",
 		"cakephp/debug_kit" : "2.2.*"
 	}
 }

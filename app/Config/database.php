@@ -90,6 +90,12 @@ if (!defined('RDS_HOSTNAME')) {
 
 class DATABASE_CONFIG {
 
+	public function __construct() {
+		if (stristr(env('HTTP_USER_AGENT'), 'selenium')) {
+			$this->default = $this->test;
+		}
+	}
+
 	public $default = array(
 	    'datasource' => 'Database/Mysql',
 	    'persistent' => false,
