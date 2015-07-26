@@ -1,0 +1,7 @@
+<?php
+	
+	putenv('EMAIL_TRANSPORT=<transport>');
+	putenv('EMAIL_HOST=<host>');
+	putenv('EMAIL_PORT=<port>');
+	putenv('EMAIL_USERNAME=<username>');
+	putenv('EMAIL_PASSWORD=<password>');

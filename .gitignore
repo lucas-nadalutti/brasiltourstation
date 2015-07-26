@@ -2,6 +2,7 @@
 #################################################
 /app/Config/core-dev.php
 /app/Config/database-dev.php
+/app/Config/email-dev.php
 /app/Plugin
 /app/Vendor
 /app/tmp
