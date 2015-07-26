@@ -88,6 +88,11 @@ if (!defined('RDS_HOSTNAME')) {
 	define('TEST_DB_NAME', getenv('TEST_DB_NAME'));
 }
 
+print_r(RDS_HOSTNAME);
+print_r(RDS_USERNAME);
+print_r(RDS_PASSWORD);
+print_r(RDS_DB_NAME);
+
 class DATABASE_CONFIG {
 
 	public function __construct() {
