@@ -7,17 +7,17 @@ class Video extends AppModel {
 
 	public $validate = array(
 		'url' => array(
-			'rule' => 'notEmpty',
+			'rule' => 'notBlank',
             'required' => 'create',
 			'message' => 'Este campo é obrigatório'
 		),
 		'name' => array(
-			'rule' => 'notEmpty',
+			'rule' => 'notBlank',
             'required' => 'create',
 			'message' => 'Este campo é obrigatório'
 		),
 		'type' => array(
-			'rule' => 'notEmpty',
+			'rule' => 'notBlank',
             'required' => 'create',
 			'message' => 'Este campo é obrigatório'
 		),

@@ -1,4 +1,12 @@
 <?php
+
+// Create email settings if in local environment
+
+if (is_file(dirname(__FILE__) . '/email-dev.php')) {
+	include 'email-dev.php';
+}
+
+
 /**
  *
  *
@@ -37,24 +45,32 @@
  * The origin email. See CakeEmail::from() about the valid values
  *
  */
+
+if (!defined('EMAIL_TRANSPORT')) {
+	define('EMAIL_TRANSPORT', getenv('EMAIL_TRANSPORT'));
+	define('EMAIL_HOST', getenv('EMAIL_HOST'));
+	define('EMAIL_PORT', getenv('EMAIL_PORT'));
+	define('EMAIL_USERNAME', getenv('EMAIL_USERNAME'));
+	define('EMAIL_PASSWORD', getenv('EMAIL_PASSWORD'));
+}
+
 class EmailConfig {
 
-	/***
-	
-	----------------------------- TODO REMINDER --------------------------------
-
-	MUST CHANGE THESE VALUES IN STAGING AND PRODUCTION ENVIRONMENTS WHEN THERE
-	IS AN OFFICIAL EMAIL
-
-	***/
+	/**
+	*
+	* -------------------------- TODO REMINDER -----------------------------
+	*
+	* MUST CHANGE THESE VALUES IN STAGING AND PRODUCTION ENVIRONMENTS WHEN THERE
+	* IS AN OFFICIAL EMAIL
+	*
+	*/
 
 	public $default = array(
-		'transport' => getenv('EMAIL_TRANSPORT'),
-	    'host' => getenv('EMAIL_HOST'),
-	    'port' => getenv('EMAIL_PORT'),
-	    'username' => getenv('EMAIL_USERNAME'),
-	    'password' => getenv('EMAIL_PASSWORD'),
-	    'tls' => true,
+		'transport' => EMAIL_TRANSPORT,
+	    'host' => EMAIL_HOST,
+	    'port' => EMAIL_PORT,
+	    'username' => EMAIL_USERNAME,
+	    'password' => EMAIL_PASSWORD,
 	);
 
 }

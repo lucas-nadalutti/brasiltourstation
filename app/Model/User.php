@@ -34,8 +34,8 @@ class User extends AppModel {
 			)
 		),
 		'current_password' => array(
-			'notEmpty' => array(
-				'rule' => 'notEmpty',
+			'notBlank' => array(
+				'rule' => 'notBlank',
 				'message' => 'Este campo é obrigatório'
 			),
 			'correct' => array(
@@ -50,16 +50,16 @@ class User extends AppModel {
         ),
         'password_confirmation' => array(
             'rule' => 'passwordAndConfirmationMatch',
-            'notEmpty' => true,
+            'notBlank' => true,
             'message' => 'Senha e confirmação devem ser iguais'
         ),
 		'name' => array(
-			'rule' => 'notEmpty',
+			'rule' => 'notBlank',
             'required' => 'create',
 			'message' => 'Este campo é obrigatório'
 		),
 		'role' => array(
-			'rule' => 'notEmpty',
+			'rule' => 'notBlank',
             'required' => 'create',
 			'message' => 'Este campo é obrigatório'
 		),
@@ -103,7 +103,7 @@ class User extends AppModel {
 			$emailText .= '<p>' . __('Para facilitar a memorização, recomendamos que você troque sua senha clicando na opção correspondente no menu, assim que fizer login.') . '</p>';
 			$emailText .= '<p>' . __('Atenciosamente,') . '</p>';
 			$emailText .= '<p>' . __('Equipe do Projeto') . '</p>';
-			$email = $this->getMailer('gmail');
+			$email = $this->getMailer();
 			$email->from(array('projetoturismohoteis@googlegroups.com' => 'Equipe do Projeto'))
 				->emailFormat('html')
 				->to($this->data['User']['email'])
@@ -112,7 +112,7 @@ class User extends AppModel {
     	}
     }
 
-    public function getMailer($config = null) {
+    public function getMailer($config = 'default') {
     	$mailer = new CakeEmail($config);
     	// If the browser user is Selenium, do not send an email
     	if (stristr(env('HTTP_USER_AGENT'), 'selenium')) {

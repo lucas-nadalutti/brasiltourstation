@@ -7,27 +7,27 @@ class Hotel extends AppModel {
 
 	public $validate = array(
 		'address' => array(
-			'rule' => 'notEmpty',
+			'rule' => 'notBlank',
             'required' => 'create',
 			'message' => 'Este campo é obrigatório'
 		),
 		'city' => array(
-			'rule' => 'notEmpty',
+			'rule' => 'notBlank',
             'required' => 'create',
 			'message' => 'Este campo é obrigatório'
 		),
 		'state' => array(
-			'rule' => 'notEmpty',
+			'rule' => 'notBlank',
             'required' => 'create',
 			'message' => 'Este campo é obrigatório'
 		),
 		'latitude' => array(
-			'rule' => 'notEmpty',
+			'rule' => 'notBlank',
             'required' => 'create',
 			'message' => 'Este campo é obrigatório'
 		),
 		'longitude' => array(
-			'rule' => 'notEmpty',
+			'rule' => 'notBlank',
             'required' => 'create',
 			'message' => 'Este campo é obrigatório'
 		),
