@@ -62,7 +62,7 @@ class AppController extends Controller {
 		$this->Auth->flash['params']['class'] = 'post-error message';
         $this->Auth->authError = __('Você não tem permissão para visualizar isso');
         $this->Auth->unauthorizedRequest = '/';
-        $this->Auth->allow();
+        // $this->Auth->allow();
 	}
 	
 	public function isAuthorized($user) {
