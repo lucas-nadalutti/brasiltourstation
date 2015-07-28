@@ -40,7 +40,7 @@
 		echo $this->Html->css('jquery.qtip.min');
 		echo $this->Html->css('main');
 
-		echo $this->Html->scriptBlock('var wr = ' . $this->webroot);
+		echo $this->Html->scriptBlock('var wr = "' . $this->webroot . '";');
 
 		echo $this->Html->script(
 			'//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'
@@ -74,8 +74,6 @@
 	?>
 </head>
 <body>
-
-	<?php echo 'AAAAAAAA ' . $this->webroot; ?>
 
 	<?php if ($signedUser && $signedUser['role'] == 'Cliente'): ?>
 		<!-- TOTEM LAYOUT -->
