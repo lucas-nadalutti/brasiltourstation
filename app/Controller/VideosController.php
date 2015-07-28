@@ -39,6 +39,13 @@ class VideosController extends AppController {
 		 
 		$fileName = isset($_REQUEST["name"]) ? $_REQUEST["name"] : $_FILES["file"]["name"];
 		$filePath = $this->Video->getFilesPath($fileName);
+		
+		// Create the directory if it doesn't exist
+		$dirname = dirname($filePath);
+		if (!is_dir($dirname))
+		{
+		    mkdir($dirname, 0755, true);
+		}
 		 
 		 
 		// Open temp file

@@ -6,6 +6,8 @@
 /app/Plugin
 /app/Vendor
 /app/tmp
+/app/webroot/tour_videos
+/app/webroot/tour_videos_test
 /lib/Cake/Console/Templates/skel/tmp/
 /plugins
 /vendors
