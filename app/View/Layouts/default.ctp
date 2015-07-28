@@ -75,7 +75,7 @@
 </head>
 <body>
 
-	<?php //echo 'AAAAAAAA ' . $this->webroot; ?>
+	<?php echo 'AAAAAAAA ' . $this->webroot; ?>
 
 	<?php if ($signedUser && $signedUser['role'] == 'Cliente'): ?>
 		<!-- TOTEM LAYOUT -->
