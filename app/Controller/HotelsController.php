@@ -25,6 +25,10 @@ class HotelsController extends AppController {
 			'conditions' => array('User.id' => $userId),
 			'recursive' => 1,
 		));
+		$latitude = $userHotel['Hotel']['latitude'];
+		$longitude = $userHotel['Hotel']['longitude'];
+		$this->set('latitude', $latitude);
+		$this->set('longitude', $longitude);
 
 		$this->loadModel('Attraction');
 		$this->Attraction->virtualFields['visit_count'] = '
@@ -34,7 +38,6 @@ class HotelsController extends AppController {
 		';
 		$top5Attractions = $this->Attraction->find('all', array(
 			'order' => 'visit_count DESC',
-			'limit' => 5,
 		));
 		$this->set('top5Attractions', $top5Attractions);
 
@@ -60,8 +63,6 @@ class HotelsController extends AppController {
 		if (!$forecast || !array_key_exists('cidade', $forecast)) {
 			// Request to agenciaideias did not receive a valid response, so try
 			// another source
-			$latitude = $userHotel['Hotel']['latitude'];
-			$longitude = $userHotel['Hotel']['longitude'];
 			$url = 'http://api.openweathermap.org/data/2.5/forecast/daily';
 			$params = '?lat='.$latitude.'&lon='.$longitude.'&cnt=3&mode=json';
 			$fullUrl = $url . $params;

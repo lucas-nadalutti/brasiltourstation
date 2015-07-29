@@ -1,6 +1,9 @@
 <div class="col-md-9">
-	<div id="city-map" class="col-md-12">
-		<img src="http://www.rioservicetour.com.br/mapas/rio.jpg" width="100%" alt="Mapa do RJ">
+	<div id="totem-home-map-canvas-box" class="col-md-12">
+		<div id="totem-home-loading-map">
+			Carregando mapa...
+		</div>
+		<div id="totem-home-map-canvas" hidden></div>
 	</div>
 	<div id="real-time-info" class="col-md-12">
 
@@ -12,55 +15,18 @@
 				<h4 class="home-info-box-title">Cotações atuais</h4>
 				<?php
 					$dollarQuote = $quotes['dollar']['sale'];
-					// $dollarVariation = $quotes['dollar']['variation'];
-					// if (substr($dollarVariation, 0, 1) === '+') {
-					// 	$dollarVariationClass = ' class="positive-variation"';
-					// }
-					// else if (substr($dollarVariation, 0, 1) === '-') {
-					// 	$dollarVariationClass = ' class="negative-variation"';
-					// }
-					// else {
-					// 	$dollarVariationClass = '';
-					// }
-
 					$euroQuote = $quotes['euro']['sale'];
-					// $euroVariation = $quotes['euro']['variation'];
-					// if (substr($euroVariation, 0, 1) === '+') {
-					// 	$variationClass = ' class="positive-variation"';
-					// }
-					// else if (substr($euroVariation, 0, 1) === '-') {
-					// 	$variationClass = ' class="negative-variation"';
-					// }
-					// else {
-					// 	$variationClass = '';
-					// }
-
 					$poundQuote = $quotes['pound']['sale'];
 
 					echo '<p class="quote-info">';
-					//echo '<span class="home-info-box-label">Dólar</span>: ' . $dollarQuote;
 					echo '<span class="quote-symbol"><i class="fa fa-usd"></i></span> ' . $dollarQuote;
 					echo '</p>';
-					/*echo '<p class="quote-latest-update">';
-					echo 'Atualizado: ';
-					echo '<span>' . $quotes['dollar']['latest_update'] . '</span>';
-					echo '</p>';*/
 					echo '<p class="quote-info">';
-					//echo '<span class="home-info-box-label">Euro</span>: ' . $euroQuote;
 					echo '<span class="quote-symbol"><i class="fa fa-eur"></i></span> ' . $euroQuote;
 					echo '</p>';
-					/*echo '<p class="quote-latest-update">';
-					echo 'Atualizado: ';
-					echo '<span>' . $quotes['euro']['latest_update'] . '</span>';
-					echo '</p>';*/
 					echo '<p class="quote-info">';
-					//echo '<span class="home-info-box-label">Libra</span>: ' . $poundQuote;
 					echo '<span class="quote-symbol"><i class="fa fa-gbp"></i></span> ' . $poundQuote;
 					echo '</p>';
-					/*echo '<p class="quote-latest-update">';
-					echo 'Atualizado: ';
-					echo '<span>' . $quotes['pound']['latest_update'] . '</span>';
-					echo '</p>';*/
 				?>
 			</div>
 		</div>
@@ -95,15 +61,6 @@
 							echo '°</div>';
 						?>
 					</div>
-					<?php
-						/*echo '<p class="forecast-region">' . $forecastData['place'] . '</p>';
-						echo '<p class="forecast-info"><span class="home-info-box-label">Tempo:</span> ';
-						echo $forecastData['condition'] . '</p>';
-						echo '<p class="forecast-info"><span class="home-info-box-label">Mínima:</span> ';
-						echo $forecastData['min'] . '°</p>';
-						echo '<p class="forecast-info"><span class="home-info-box-label">Máxima:</span> ';
-						echo $forecastData['max'] . '°</p>';*/
-					?>
 				</div>
 			</div>
 		</div>
@@ -162,40 +119,66 @@
 			);
 		?>
 	</div>
-	<!--<div id="most-accessed-restaurants" class="col-md-12 home-info-box">
-		<h4 class="top-5-title">Top 5</h4>
-		<p class="top-5-subtitle">Restaurantes</p>
-		<?php
-			echo '<p>';
-			echo $this->Html->link(
-				'Verdana Grill',
-				array('controller' => 'attractions', 'action' => 'show')
-			);
-			echo '</p>';
-			echo '<p>';
-			echo $this->Html->link(
-				'Nakami',
-				array('controller' => 'attractions', 'action' => 'show')
-			);
-			echo '</p>';
-			echo '<p>';
-			echo $this->Html->link(
-				'7 Grill',
-				array('controller' => 'attractions', 'action' => 'show')
-			);
-			echo '</p>';
-			echo '<p>';
-			echo $this->Html->link(
-				'Buzin',
-				array('controller' => 'attractions', 'action' => 'show')
-			);
-			echo '</p>';
-			echo '<p>';
-			echo $this->Html->link(
-				'Bob\'s',
-				array('controller' => 'attractions', 'action' => 'show')
-			);
-			echo '</p>';
-		?>
-	</div>-->
 </div>
+
+<?php
+	echo $this->Form->hidden(
+		'latitude',
+		array(
+			'id' => 'latitude',
+			'value' => $latitude
+		)
+	);
+	echo $this->Form->hidden(
+		'longitude',
+		array(
+			'id' => 'longitude',
+			'value' => $longitude
+		)
+	);
+?>
+
+<script>
+
+	$(document).ready(function() {
+		$.get(wr+'attractions/jsonList', function(data) {
+			var attractions = $.parseJSON(data);
+			console.log('loaded attractions');
+			$('#totem-home-loading-map').hide();
+			$('#totem-home-map-canvas').show();
+			renderMap(attractions);
+		});
+	});
+
+	function renderMap(attractions) {
+		var latitude = $('#latitude').val();
+		var longitude = $('#longitude').val();
+		var mapOptions = {
+			center: new google.maps.LatLng(latitude, longitude),
+			zoom: 16,
+		};
+		var map = new google.maps.Map($('#totem-home-map-canvas')[0], mapOptions);
+
+		createMarker(map, latitude, longitude, 'Você está aqui');
+
+		attractions.map(function(attraction) {
+			latitude = attraction['Attraction']['latitude'];
+			longitude = attraction['Attraction']['longitude'];
+			name = attraction['Attraction']['name'];
+			createMarker(map, latitude, longitude, name);
+		});
+	}
+
+	function createMarker(map, latitude, longitude, title) {
+		var marker = new google.maps.Marker({
+		    position: new google.maps.LatLng(latitude, longitude),
+		    map: map,
+		    title: title
+		});
+
+		var infowindow = new google.maps.InfoWindow();
+		infowindow.setContent('<div>'+title+'</div>');
+		infowindow.open(map, marker);
+	}
+
+</script>

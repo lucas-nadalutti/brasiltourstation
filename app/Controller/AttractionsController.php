@@ -4,7 +4,10 @@ class AttractionsController extends AppController {
 
 	public function isAuthorized($user) {
 		if ($user['role'] === 'Cliente') {
-			if (in_array($this->action, array('attractionsList', 'show', 'getTotal', 'getAttractions'))) {
+			$allowedActions = array(
+				'attractionsList', 'jsonList', 'show', 'getAttractions'
+			);
+			if (in_array($this->action, $allowedActions)) {
 				return true;
 			}
 		}
@@ -16,6 +19,12 @@ class AttractionsController extends AppController {
 			'order' => 'name'
 		));
 		$this->set('attractions', $attractions);
+	}
+
+	public function jsonList() {
+		$this->autoRender = false;
+		$attractions = $this->Attraction->find('all');
+		echo json_encode($attractions);
 	}
 
 	public function attractionsList($tag = null) {
