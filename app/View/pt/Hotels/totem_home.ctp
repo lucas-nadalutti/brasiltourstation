@@ -155,7 +155,7 @@
 		var longitude = $('#longitude').val();
 		var mapOptions = {
 			center: new google.maps.LatLng(latitude, longitude),
-			zoom: 16,
+			zoom: 14,
 		};
 		var map = new google.maps.Map($('#totem-home-map-canvas')[0], mapOptions);
 
@@ -176,9 +176,11 @@
 		    title: title
 		});
 
-		var infowindow = new google.maps.InfoWindow();
-		infowindow.setContent('<div>'+title+'</div>');
-		infowindow.open(map, marker);
+		var infoWindow = new google.maps.InfoWindow({
+			content: '<div>'+title+'</div>',
+			disableAutoPan: true
+		});
+		infoWindow.open(map, marker);
 	}
 
 </script>
