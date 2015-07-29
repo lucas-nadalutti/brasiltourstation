@@ -38,6 +38,7 @@ class HotelsController extends AppController {
 		';
 		$top5Attractions = $this->Attraction->find('all', array(
 			'order' => 'visit_count DESC',
+			'limit' => 5,
 		));
 		$this->set('top5Attractions', $top5Attractions);
 
