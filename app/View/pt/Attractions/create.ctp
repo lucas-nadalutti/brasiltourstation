@@ -46,8 +46,6 @@
 
 	echo '<div id="map-canvas" style="width: 800px; height: 500px;"></div>';
 
-	// TODO: Javascript dynamic control of video related part of the form
-
 	echo '<div class="input checkbox">';
 	echo '<label>';
 	echo $this->Form->input('Attraction.has_no_video', array('id' => 'has-no-video', 'type' => 'checkbox', 'label' => false, 'div' => false));

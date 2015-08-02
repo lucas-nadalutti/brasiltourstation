@@ -434,12 +434,11 @@
 			<div id="sponsors" class="col-md-12 bar-container">
 				<div class="col-md-12 sponsor-area">
 					<div class="sponsor-box">
-						<p>Endereço 1</p>
 						<?php
 							echo $this->Html->link(
 								'
 								<p>
-								'.$this->Html->image('patrocinador-parceiro.png').'
+								'.$this->Html->image('sponsor-logos/guia-layla-turismo.jpg').'
 								</p>
 								',
 								array(
@@ -452,11 +451,9 @@
 								)
 							);
 						?>
-						<p>Descrição 1</p>
 						<p>Saiba mais</p>
 					</div>
 					<div class="sponsor-box">
-						<p>Endereço 2</p>
 						<?php
 							echo $this->Html->link(
 								'
@@ -474,11 +471,9 @@
 								)
 							);
 						?>
-						<p>Descrição 2</p>
 						<p>Saiba mais</p>
 					</div>
 					<div class="sponsor-box">
-						<p>Endereço 3</p>
 						<?php
 							echo $this->Html->link(
 								'
@@ -496,35 +491,9 @@
 								)
 							);
 						?>
-						<p>Descrição 3</p>
-						<p>Saiba mais</p>
-					</div>
-				</div>
-				<div class="col-md-12 sponsor-area">
-					<div class="sponsor-box">
-						<p>Endereço 4</p>
-						<?php
-							echo $this->Html->link(
-								'
-								<p>
-								'.$this->Html->image('patrocinador-parceiro.png').'
-								</p>
-								',
-								array(
-									'controller' => 'hotels',
-									'action' => 'totemHome',
-								),
-								array(
-									'class' => 'fixed-bar-link',
-									'escape' => false,
-								)
-							);
-						?>
-						<p>Descrição 4</p>
 						<p>Saiba mais</p>
 					</div>
 					<div class="sponsor-box">
-						<p>Endereço 5</p>
 						<?php
 							echo $this->Html->link(
 								'
@@ -542,35 +511,11 @@
 								)
 							);
 						?>
-						<p>Descrição 5</p>
-						<p>Saiba mais</p>
-					</div>
-					<div class="sponsor-box">
-						<p>Endereço 6</p>
-						<?php
-							echo $this->Html->link(
-								'
-								<p>
-								'.$this->Html->image('patrocinador-parceiro.png').'
-								</p>
-								',
-								array(
-									'controller' => 'hotels',
-									'action' => 'totemHome',
-								),
-								array(
-									'class' => 'fixed-bar-link',
-									'escape' => false,
-								)
-							);
-						?>
-						<p>Descrição 6</p>
 						<p>Saiba mais</p>
 					</div>
 				</div>
 				<div class="col-md-12 sponsor-area">
 					<div class="sponsor-box">
-						<p>Endereço 7</p>
 						<?php
 							echo $this->Html->link(
 								'
@@ -588,11 +533,9 @@
 								)
 							);
 						?>
-						<p>Descrição 7</p>
 						<p>Saiba mais</p>
 					</div>
 					<div class="sponsor-box">
-						<p>Endereço 8</p>
 						<?php
 							echo $this->Html->link(
 								'
@@ -610,11 +553,9 @@
 								)
 							);
 						?>
-						<p>Descrição 8</p>
 						<p>Saiba mais</p>
 					</div>
 					<div class="sponsor-box">
-						<p>Endereço 9</p>
 						<?php
 							echo $this->Html->link(
 								'
@@ -632,7 +573,108 @@
 								)
 							);
 						?>
-						<p>Descrição 9</p>
+						<p>Saiba mais</p>
+					</div>
+					<div class="sponsor-box">
+						<?php
+							echo $this->Html->link(
+								'
+								<p>
+								'.$this->Html->image('patrocinador-parceiro.png').'
+								</p>
+								',
+								array(
+									'controller' => 'hotels',
+									'action' => 'totemHome',
+								),
+								array(
+									'class' => 'fixed-bar-link',
+									'escape' => false,
+								)
+							);
+						?>
+						<p>Saiba mais</p>
+					</div>
+				</div>
+				<div class="col-md-12 sponsor-area">
+					<div class="sponsor-box">
+						<?php
+							echo $this->Html->link(
+								'
+								<p>
+								'.$this->Html->image('patrocinador-parceiro.png').'
+								</p>
+								',
+								array(
+									'controller' => 'hotels',
+									'action' => 'totemHome',
+								),
+								array(
+									'class' => 'fixed-bar-link',
+									'escape' => false,
+								)
+							);
+						?>
+						<p>Saiba mais</p>
+					</div>
+					<div class="sponsor-box">
+						<?php
+							echo $this->Html->link(
+								'
+								<p>
+								'.$this->Html->image('patrocinador-parceiro.png').'
+								</p>
+								',
+								array(
+									'controller' => 'hotels',
+									'action' => 'totemHome',
+								),
+								array(
+									'class' => 'fixed-bar-link',
+									'escape' => false,
+								)
+							);
+						?>
+						<p>Saiba mais</p>
+					</div>
+					<div class="sponsor-box">
+						<?php
+							echo $this->Html->link(
+								'
+								<p>
+								'.$this->Html->image('patrocinador-parceiro.png').'
+								</p>
+								',
+								array(
+									'controller' => 'hotels',
+									'action' => 'totemHome',
+								),
+								array(
+									'class' => 'fixed-bar-link',
+									'escape' => false,
+								)
+							);
+						?>
+						<p>Saiba mais</p>
+					</div>
+					<div class="sponsor-box">
+						<?php
+							echo $this->Html->link(
+								'
+								<p>
+								'.$this->Html->image('patrocinador-parceiro.png').'
+								</p>
+								',
+								array(
+									'controller' => 'hotels',
+									'action' => 'totemHome',
+								),
+								array(
+									'class' => 'fixed-bar-link',
+									'escape' => false,
+								)
+							);
+						?>
 						<p>Saiba mais</p>
 					</div>
 				</div>
@@ -663,6 +705,14 @@
 					echo $this->Html->link(
 						__('Lista de atrações'),
 						array('controller' => 'attractions', 'action' => 'index')
+					);
+					echo $this->Html->link(
+						__('Cadastrar pacote'),
+						array('controller' => 'packages', 'action' => 'create')
+					);
+					echo $this->Html->link(
+						__('Lista de pacotes'),
+						array('controller' => 'packages', 'action' => 'index')
 					);
 					echo $this->Html->link(
 						__('Cadastrar tag'),
