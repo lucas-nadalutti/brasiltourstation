@@ -2,7 +2,7 @@
 
 class Video extends AppModel {
 
-	public $hasOne = array('Attraction', 'Package');
+	public $hasOne = array('Hotel', 'Attraction', 'Package');
 	public $hasMany = 'HotelVideo';
 
 	public $validate = array(

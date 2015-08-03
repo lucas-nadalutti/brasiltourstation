@@ -92,8 +92,15 @@ class HotelsController extends AppController {
 	}
 
 	public function hotelInfo() {
-		$loggedUser = $this->Auth->user();
-		$this->set('loggedUser', $loggedUser);
+		// TODO: Remove finds in actions where the user's hotel info is needed -
+		// it's already in Auth->user()
+		$userHotel = $this->Auth->user();
+		$this->set('userHotel', $userHotel);
+		$videoId = $userHotel['Hotel']['video_id'];
+		if ($videoId) {
+			$video = $this->Hotel->Video->findById($videoId);
+			$this->set('video', $video);
+		}
 	}
 
 	public function tours() {

@@ -2,7 +2,7 @@
 
 class Hotel extends AppModel {
 
-	public $belongsTo = 'User';
+	public $belongsTo = array('User', 'Video');
 	public $hasMany = 'AttractionHotel';
 
 	public $validate = array(
