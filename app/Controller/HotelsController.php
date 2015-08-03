@@ -96,6 +96,8 @@ class HotelsController extends AppController {
 		// it's already in Auth->user()
 		$userHotel = $this->Auth->user();
 		$this->set('userHotel', $userHotel);
+		print_r($userHotel);
+		die();
 		$videoId = $userHotel['Hotel']['video_id'];
 		if ($videoId) {
 			$video = $this->Hotel->Video->findById($videoId);
