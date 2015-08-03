@@ -143,7 +143,6 @@
 	$(document).ready(function() {
 		$.get(wr+'attractions/jsonList', function(data) {
 			var attractions = $.parseJSON(data);
-			console.log('loaded attractions');
 			$('#totem-home-loading-map').hide();
 			$('#totem-home-map-canvas').show();
 			renderMap(attractions);

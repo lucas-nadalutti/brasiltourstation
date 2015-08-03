@@ -8,7 +8,9 @@ class Attraction extends AppModel {
 	public function afterSave($created, $options = array()) {
 		// Create AttractionHotel records relating the newly created attraction
 		// with every existing hotel
-		$this->AttractionHotel->createFromAttraction($this->data);
+		if ($created) {
+			$this->AttractionHotel->createFromAttraction($this->data);
+		}
 	}
 
 }

@@ -85,6 +85,19 @@
 			}
 	    </style>
 
+	    <!-- Update life sign -->
+		<script>
+
+			$(document).ready(function() {
+
+				setInterval(function() {
+					$.post(wr+'hotels/sendLifeSign');
+				}, 60000);
+
+			});
+
+		</script>
+
 	    <!-- jQuery Carousel for sponsors -->
 	    <script>
 	    	$(document).ready(function() {
