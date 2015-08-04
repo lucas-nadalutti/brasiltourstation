@@ -79,7 +79,7 @@
 		<!-- TOTEM LAYOUT -->
 
 		<!-- Remove scrollbar in browsers that support this removal -->
-		<style type = "text/css">
+		<style type="text/css">
 	    	body::-webkit-scrollbar {
 				width: 0 !important;
 			}

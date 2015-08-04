@@ -227,7 +227,9 @@ require_once dirname(__DIR__) . '/Vendor/autoload.php';
  *
  */
 	Configure::write('Session', array(
-		'defaults' => 'php'
+		'defaults' => 'php',
+		'timeout' => 0,
+		'cookieTimeout' => 0,
 	));
 
 /**
