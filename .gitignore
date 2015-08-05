@@ -5,6 +5,7 @@
 /app/Config/email-dev.php
 /app/Plugin
 /app/Vendor
+/app/node_modules
 /app/tmp
 /app/webroot/tour_videos
 /app/webroot/tour_videos_test

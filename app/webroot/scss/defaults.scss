@@ -1,0 +1,186 @@
+#header {
+	margin-top: 1em;
+	margin-bottom: 0.5em;
+}
+
+.fixed-bar {
+	height: 100%;
+	padding: 0;
+	text-align: center;
+	background-color: #000000;
+	position: fixed;
+	top : 0;
+	z-index: 10;
+}
+
+.fixed-bar-left {
+	left: 0;
+}
+
+.bar-container {
+	height: 100%;
+	padding: 0;
+	position: relative;
+}
+
+.fixed-bar-link-box {
+	width: 100%;
+	padding: 0;
+	text-align: center;
+}
+
+.fixed-bar-link {
+	width: 100%;
+	display: block;
+}
+
+.bar-logo {
+	margin-top: 1em;
+}
+
+.bar-logo img {
+	width: 80%;
+	border-radius: 0.7em;
+}
+
+#our-logo {
+	margin-bottom: 4em;
+}
+
+#bar-home p {
+	color: #ffffff;
+	font-size: 4em;
+}
+
+#language-flags {
+	position: absolute;
+	bottom: 0;
+}
+
+.language-flag-icon {
+	margin-bottom: 0.1em;
+	text-align: center;
+}
+
+.language-flag-icon img {
+	width: 75%;
+}
+
+.fixed-bar-right {
+	right: 0;
+}
+
+.sponsor-area {
+	width: 100%;
+	padding: 0 0.5em;
+}
+
+.sponsor-box {
+	width: 100%;
+	height: 22vh;
+	margin-top: 2.5vh;
+	padding: 0.5em;
+	text-align: center;
+	background-color: #ffffff;
+	border-radius: 0.7em;
+}
+
+.sponsor-box img {
+	width: 100%;
+}
+
+.menu-row {
+	text-align: center;
+}
+
+.menu-item-link-box {
+	width: 9%;
+	margin: 0.5% 1%;
+	padding-bottom: 9%;
+	display: inline-block;
+	position: relative;
+	border-radius: 0.7em;
+	overflow: hidden;
+	box-shadow: 0 6px 10px -5px #666666;
+}
+
+.menu-item-link-box:nth-child(even) {
+	background-color: #0000ff; 
+}
+
+.menu-item-link-box:nth-child(odd) {
+	background-color: #587cff; 
+}
+
+.menu-item-link-box.hotel-item {
+	background-color: #3F51B5;
+}
+
+.menu-item-link-box.attractions-item {
+	background-color: #8BC34A;
+}
+
+.menu-item-link-box.packages-item {
+	background-color: #FF5722;
+}
+
+.menu-item-link-box.food-item {
+	background-color: #FFC107;
+}
+
+.menu-item-link-box.shopping-item {
+	background-color: #F44336;
+}
+
+.menu-item-link-box.car-item {
+	background-color: #009688;
+}
+
+.menu-item-link-box.virtual-store-item {
+	background-color: #E91E63;
+}
+
+.menu-item-link-box.olympics-item {
+	background-color: #CDDC39;
+}
+
+.menu-item-link-box.about-city-item {
+	background-color: #9C27B0;
+}
+
+.menu-item-link {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+	display: block;
+	text-align: center;
+	border-radius: inherit;
+}
+
+.menu-content-box {
+    height: 100%;
+    width: 100%;
+	display: table;
+}
+
+.menu-content {
+    height: 100%;
+    width: 100%;
+	display: table-cell;
+	vertical-align: middle;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+.menu-content p {
+	font-size: 0.9em;
+	margin-bottom: 0.3em;
+}
+
+.menu-content img {
+	width: 50%;
+}
+
+.menu-icon {
+	font-size: 2.5em;
+}
