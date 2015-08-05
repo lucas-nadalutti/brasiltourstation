@@ -1,0 +1,10 @@
+{
+    "name": "Brasil Tour Station",
+    "version": "0.0.1",
+    "description": "Brasil Tour Station",
+    "devDependencies": {
+        "gulp": "3.9.0",
+        "gulp-sass": "2.0.4"
+    },
+    "private": true,
+}
