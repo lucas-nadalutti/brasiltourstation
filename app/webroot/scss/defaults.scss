@@ -1,3 +1,5 @@
+@import "_common";
+
 #header {
 	margin-top: 1em;
 	margin-bottom: 0.5em;
@@ -9,7 +11,7 @@
 	text-align: center;
 	background-color: #000000;
 	position: fixed;
-	top : 0;
+	top: 0;
 	z-index: 10;
 }
 
@@ -36,20 +38,22 @@
 
 .bar-logo {
 	margin-top: 1em;
-}
 
-.bar-logo img {
-	width: 80%;
-	border-radius: 0.7em;
+	img {
+		width: 80%;
+		border-radius: 0.7em;
+	}
 }
 
 #our-logo {
 	margin-bottom: 4em;
 }
 
-#bar-home p {
-	color: #ffffff;
-	font-size: 4em;
+#bar-home {
+	p {
+		color: #ffffff;
+		font-size: 4em;
+	}
 }
 
 #language-flags {
@@ -60,10 +64,10 @@
 .language-flag-icon {
 	margin-bottom: 0.1em;
 	text-align: center;
-}
 
-.language-flag-icon img {
-	width: 75%;
+	img {
+		width: 75%;
+	}
 }
 
 .fixed-bar-right {
@@ -83,10 +87,10 @@
 	text-align: center;
 	background-color: #ffffff;
 	border-radius: 0.7em;
-}
 
-.sponsor-box img {
-	width: 100%;
+	img {
+		width: 100%;
+	}
 }
 
 .menu-row {
@@ -102,50 +106,42 @@
 	border-radius: 0.7em;
 	overflow: hidden;
 	box-shadow: 0 6px 10px -5px #666666;
-}
 
-.menu-item-link-box:nth-child(even) {
-	background-color: #0000ff; 
-}
+	&.hotel-item {
+		background-color: $hotel-info-main-color;
+	}
 
-.menu-item-link-box:nth-child(odd) {
-	background-color: #587cff; 
-}
+	&.attractions-item {
+		background-color: $attractions-main-color;
+	}
 
-.menu-item-link-box.hotel-item {
-	background-color: #3F51B5;
-}
+	&.packages-item {
+		background-color: $packages-main-color;
+	}
 
-.menu-item-link-box.attractions-item {
-	background-color: #8BC34A;
-}
+	&.food-item {
+		background-color: $food-main-color;
+	}
 
-.menu-item-link-box.packages-item {
-	background-color: #FF5722;
-}
+	&.shopping-item {
+		background-color: $shopping-main-color;
+	}
 
-.menu-item-link-box.food-item {
-	background-color: #FFC107;
-}
+	&.car-item {
+		background-color: $car-main-color;
+	}
 
-.menu-item-link-box.shopping-item {
-	background-color: #F44336;
-}
+	&.virtual-store-item {
+		background-color: $virtual-store-main-color;
+	}
 
-.menu-item-link-box.car-item {
-	background-color: #009688;
-}
+	&.olympics-item {
+		background-color: $olympics-main-color;
+	}
 
-.menu-item-link-box.virtual-store-item {
-	background-color: #E91E63;
-}
-
-.menu-item-link-box.olympics-item {
-	background-color: #CDDC39;
-}
-
-.menu-item-link-box.about-city-item {
-	background-color: #9C27B0;
+	&.about-city-item {
+		background-color: $about-city-main-color;
+	}
 }
 
 .menu-item-link {
@@ -170,15 +166,15 @@
 	vertical-align: middle;
 	color: #ffffff;
 	font-weight: bold;
-}
 
-.menu-content p {
-	font-size: 0.9em;
-	margin-bottom: 0.3em;
-}
+	p {
+		font-size: 0.9em;
+		margin-bottom: 0.3em;
+	}
 
-.menu-content img {
-	width: 50%;
+	img {
+		width: 50%;
+	}
 }
 
 .menu-icon {

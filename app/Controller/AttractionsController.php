@@ -5,7 +5,8 @@ class AttractionsController extends AppController {
 	public function isAuthorized($user) {
 		if ($user['role'] === 'Cliente') {
 			$allowedActions = array(
-				'attractionsList', 'jsonList', 'show', 'getAttractions'
+				'attractionsList', 'restaurantsList', 'shoppingsList',
+				'jsonList', 'show', 'getAttractions'
 			);
 			if (in_array($this->action, $allowedActions)) {
 				return true;
@@ -34,6 +35,14 @@ class AttractionsController extends AppController {
 			'order' => 'name_pt'
 		));
 		$this->set('tags', $tags);
+	}
+
+	public function restaurantsList($tag = null) {
+
+	}
+
+	public function shoppingsList($tag = null) {
+
 	}
 
 	public function show($id = null) {

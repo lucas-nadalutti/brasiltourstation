@@ -279,8 +279,8 @@
 						</div>
 						',
 						array(
-							'controller' => 'hotels',
-							'action' => 'hotelInfo',
+							'controller' => 'packages',
+							'action' => 'packagesList',
 						),
 						array(
 							'class' => 'menu-item-link',
@@ -302,8 +302,8 @@
 						</div>
 						',
 						array(
-							'controller' => 'hotels',
-							'action' => 'hotelInfo',
+							'controller' => 'attractions',
+							'action' => 'restaurantsList',
 						),
 						array(
 							'class' => 'menu-item-link',
@@ -325,8 +325,8 @@
 						</div>
 						',
 						array(
-							'controller' => 'hotels',
-							'action' => 'hotelInfo',
+							'controller' => 'attractions',
+							'action' => 'shoppingsList',
 						),
 						array(
 							'class' => 'menu-item-link',
@@ -432,7 +432,7 @@
 			</div>
 			<div id="content" class="col-md-12">
 				<?php
-					echo $this->Session->flash('auth');
+					echo $this->Flash->render('auth');
 					echo $this->Session->flash();
 
 					echo $this->fetch('content');
@@ -747,7 +747,7 @@
 			</div>
 			<div id="content" class="col-md-12">
 				<?php
-					// TODO: Replace Session->setFlash with Flash->set everywhere 
+					// TODO: Replace Session->setFlash with Flash->set everywhere
 					echo $this->Flash->render('auth');
 					echo $this->Session->flash();
 

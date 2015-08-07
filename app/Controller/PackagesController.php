@@ -2,6 +2,16 @@
 
 class PackagesController extends AppController {
 
+	public function isAuthorized($user) {
+		if ($user['role'] === 'Cliente') {
+			$allowedActions = array('packagesList');
+			if (in_array($this->action, $allowedActions)) {
+				return true;
+			}
+		}
+		return parent::isAuthorized($user);
+	}
+
 	public function create() {
 		if ($this->request->is('post')) {
 			$this->Package->create();
@@ -28,6 +38,10 @@ class PackagesController extends AppController {
 			'order' => 'name',
 		));
 		$this->set('attractions', $attractions);
+	}
+
+	public function packagesList() {
+		
 	}
 
 }

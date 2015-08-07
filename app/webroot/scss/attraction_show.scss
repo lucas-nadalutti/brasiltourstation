@@ -1,15 +1,13 @@
+@import "_common";
+
 #attraction-video-wrapper {
 	width: 100%;
 	height: 0;
 	padding-bottom: 56.25%; /* 16:9 aspect ratio */;
-}
 
-#attraction-video-wrapper video {
-	width: 100%;
-}
-
-#attraction-description-box {
-	//background-color: #ffff00;
+	video {
+		width: 100%;
+	}
 }
 
 #route-map-wrapper {
@@ -47,20 +45,24 @@
 	transition: inherit;
 }
 
-.travel-mode-selected .travel-mode-icon {
-	background-color: #00aa00;
+.travel-mode-selected {
+	.travel-mode-icon {
+		background-color: #00aa00;
+	}
+
+	.travel-mode-text {
+		background-color: #00cc00;
+	}
 }
 
-.travel-mode-selected .travel-mode-text {
-	background-color: #00cc00;
-}
-
-.travel-mode-disabled .travel-mode-icon {
+.travel-mode-disabled {
 	color: #ffffff;
-	background-color: #cc0000;
-}
 
-.travel-mode-disabled .travel-mode-text {
-	color: #ffffff;
-	background-color: #ee0000;
+	.travel-mode-icon {
+		background-color: #cc0000;
+	}
+
+	.travel-mode-text {
+		background-color: #ee0000;
+	}
 }

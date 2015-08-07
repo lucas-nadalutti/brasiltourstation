@@ -1,3 +1,5 @@
+@import "_common";
+
 #totem-home-map-canvas-box {
 	height: 55vh;
 }
@@ -15,6 +17,10 @@
 	margin-bottom: 1em;
 	padding: 0 0 1em 0;
 	font-size: 0.9em;
+
+	a {
+		text-decoration: none;
+	}
 }
 
 .home-info-box-title {
@@ -22,10 +28,6 @@
 	margin-bottom: 0.2em;
 	font-size: 1.4em;
 	font-weight: bold;
-}
-
-.home-info-box a {
-	text-decoration: none;
 }
 
 .home-info-box-label {
@@ -56,25 +58,25 @@
 }
 
 .attraction-link {
-	background-color: #8BC34A;
+	background-color: $attractions-main-color;
 }
 
 .package-link {
-	background-color: #FF5722;
+	background-color: $packages-main-color;
 }
 
 .real-time-image {
 	padding: 0;
-}
 
-.real-time-image img {
-	width: 100%;
+	img {
+		width: 100%;
+	}
 }
 
 #quotes {
 	text-align: left;
 	padding: 0.6em;
-	border: 0.5em solid #8bc34a;
+	border: 0.5em solid $attractions-main-color;
 	border-radius: 0.7em;
 }
 
@@ -104,10 +106,10 @@
 .quote-latest-update {
 	margin-top: 0.2em;
 	font-size: 0.8em;
-}
 
-.quote-latest-update span {
-	font-weight: bold;
+	span {
+		font-weight: bold;
+	}
 }
 
 #forecast {
@@ -129,16 +131,14 @@
 	font-size: 0.7em;
 }
 
-.forecast-place {
-
-}
-
 .forecast-date {
 	font-weight: bold;
 }
 
-.forecast-icon img {
-	width: 100%;
+.forecast-icon {
+	img {
+		width: 100%;
+	}
 }
 
 .temperature-info {

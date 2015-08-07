@@ -1,3 +1,5 @@
+@import "_common";
+
 #attractions-list-title {
 	margin-bottom: 0;
 }
@@ -6,7 +8,7 @@
 	margin-right: 0.5em;
 	padding: 0.3em 0.5em;
 	color: #ffffff;
-	background-color: #8BC34A;
+	background-color: $attractions-main-color;
 	font-size: 0.5em;
 	border-radius: 0.2em;
 }
@@ -16,26 +18,9 @@
 	padding-left: 0.25em;
 	font-size: 1.2em;
 	cursor: pointer;
-	background-color: #8BC34A;
+	background-color: $attractions-main-color;
 	border-left: 1px solid #7CB342;
 }
-
-/*.remove-distance-filter {
-	border-left: 1px solid #3b7dfd;
-}
-
-.remove-tag-filter {
-	background-color: #ee8f00;
-	border-left: 1px solid #df8704;
-}
-
-.attraction-distance-filter {
-	background-color: #6599FF;
-}
-
-.attraction-tag-filter {
-	background-color: #FF9900;
-}*/
 
 .filter-buttons-box {
 	margin-top: 1em;
@@ -58,61 +43,39 @@
 	width: 11em;
 	margin: 0 0.7em;
     display: inline-block;
-}
 
-.filter-button a {
-	width: 100%;
-	text-align: center;
-    display: block;
-    color: #ffffff !important;
-    border-radius: 0.5em;
-    box-shadow: 0 8px 0 #689F38, 0 15px 20px rgba(0, 0, 0, .35);
-    transition: box-shadow .1s ease-in-out;
-}
+    a {
+		width: 100%;
+		text-align: center;
+	    display: block;
+	    color: #ffffff !important;
+	    border-radius: 0.5em;
+	    box-shadow: 0 8px 0 $attractions-darker-color, 0 15px 20px rgba(0, 0, 0, .35);
+	    transition: box-shadow .1s ease-in-out;
 
-.filter-button span {
-	width: 100%;
-    padding: 0.5em 1em;
-    display: inline-block;
-	font-weight: bold;
-    border-radius: 0.5em;
-    background-color: #8BC34A;
-    box-shadow: inset 0 -1px 1px rgba(255, 255, 255, .15);
-    text-shadow: 0 -1px 1px rgba(175, 49, 95, .7);
-    transition: background-color .2s ease-in-out, transform .1s ease-in-out;
-}
+	    &:focus, &.chosen-sort-criterium {
+	    	span {
+	    		transform: translate(0, 4px);
+	    	}
+	    }
+	}
 
-.filter-button span .fa {
-	margin-left: 0.7em;
-}
+	span {
+		width: 100%;
+	    padding: 0.5em 1em;
+	    display: inline-block;
+		font-weight: bold;
+	    border-radius: 0.5em;
+	    background-color: $attractions-main-color;
+	    box-shadow: inset 0 -1px 1px rgba(255, 255, 255, .15);
+	    text-shadow: 0 -1px 1px rgba(175, 49, 95, .7);
+	    transition: background-color .2s ease-in-out, transform .1s ease-in-out;
 
-.filter-button a:focus span, .filter-button a.chosen-sort-criterium span {
-    transform: translate(0, 4px);
+	    .fa {
+			margin-left: 0.7em;
+		}
+	}
 }
-
-/*.sort-criterium-button {
-    box-shadow: 0 8px 0 #097054, 0 15px 20px rgba(0, 0, 0, .35);
-}
-
-.sort-criterium-button span {
-    background-color: #198d6e;
-}
-
-.distance-filter-button {
-    box-shadow: 0 8px 0 #3b7dfd, 0 15px 20px rgba(0, 0, 0, .35);
-}
-
-.distance-filter-button span {
-    background-color: #6599FF;
-}
-
-.tags-filter-button {
-    box-shadow: 0 8px 0 #df8704, 0 15px 20px rgba(0, 0, 0, .35);
-}
-
-.tags-filter-button span {
-    background-color: #FF9900;
-}*/
 
 .qtip {
 	background-color: #ffffff;
@@ -120,16 +83,8 @@
 	border-radius: 0.7em;
 	line-height: normal;
 	box-shadow: 2px 2px 2px 2px #666666;
-	border: 2px solid #8BC34A;
+	border: 2px solid $attractions-main-color;
 }
-
-/*.qtip-distance {
-	border: 2px solid #8BC34A;
-}
-
-.qtip-tags {
-	border: 2px solid #FF9900;
-}*/
 
 #attraction-distance-filter-tooltip {
 	font-size: 2em;
@@ -144,19 +99,19 @@
 #attraction-tags-arrows {
 	width: 70%;
 	margin: 0.5em auto;
-}
 
-#attraction-tags-arrows a {
-	color: #ffffff !important;
-	background-color: #8BC34A;
-}
+	a {
+		color: #ffffff !important;
+		background-color: $attractions-main-color;
 
-#attraction-tags-arrows a.slick-prev {
-	float: left;
-}
+		&.slick-prev {
+			float: left;
+		}
 
-#attraction-tags-arrows a.slick-next {
-	float: right;
+		&.slick-next {
+			float: right;
+		}
+	}
 }
 
 .qtip-close {
@@ -181,11 +136,11 @@
 #attractions-table {
 	width: 90%;
 	margin: 0 auto;
-}
 
-#attractions-table td {
-	width: 50%;
-	padding-bottom: 1em;
+	td {
+		width: 50%;
+		padding-bottom: 1em;
+	}
 }
 
 .attraction-info-box {
@@ -194,7 +149,7 @@
 	margin: 0 auto;
 	padding: 0.5em 0;
 	border-radius: 0.5em;
-	background-color: #8BC34A;
+	background-color: $attractions-main-color;
 }
 
 .attraction-button {
@@ -205,7 +160,7 @@
 	vertical-align: top;
 	font-size: 2.2em;
 	color: #ffffff !important;
-	background-color: #689F38;
+	background-color: $attractions-darker-color;
 	border-radius: 0.3em;
 	box-shadow: 0 3px 8px -4px #000000;
 }
@@ -230,7 +185,7 @@
 	margin-right: 0.2em;
 	padding: 0.2em 0.5em;
 	font-style: italic;
-	background-color: #AED581;
+	background-color: $attractions-lighter-color;
 	border-radius: 0.2em;
 }
 
@@ -240,6 +195,8 @@
 	vertical-align: top;
 }
 
-.attraction-distance-icon img {
-	width: 55%;
+.attraction-distance-icon {
+	img {
+		width: 55%;
+	}
 }
