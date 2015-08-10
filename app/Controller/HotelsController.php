@@ -37,6 +37,7 @@ class HotelsController extends AppController {
 			WHERE attraction_id = Attraction.id AND hotel_id = '.$userHotel['Hotel']['id'].'
 		';
 		$top5Attractions = $this->Attraction->find('all', array(
+			'conditions' => array('category' => 'Attraction'),
 			'order' => 'visit_count DESC',
 			'limit' => 5,
 		));

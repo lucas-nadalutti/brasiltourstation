@@ -32,11 +32,18 @@
 		'TO' => 'TO',
 	);
 
+	$categories = array(
+		'Attraction' => 'Atração',
+		'Restaurant' => 'Restaurante',
+		'Shopping' => 'Loja',
+	);
+
 	echo $this->Form->create('Attraction', array('id' => 'attraction-form', 'inputDefaults' => array('format' => array('before', 'error', 'label', 'between', 'input', 'after'))));
 
 	echo $this->Form->input('AttractionTag.tags', array('id' => 'tags-input', 'label' => 'Tags:'));
 
-	echo $this->Form->input('name', array('label' => 'Nome:'));
+	echo $this->Form->input('Attraction.name', array('label' => 'Nome:'));
+	echo $this->Form->input('Attraction.category', array('label' => 'Categoria:', 'options' => $categories));
 
 	echo $this->Form->input('Attraction.address', array('id' => 'attraction-address', 'label' => 'Endereço:', 'placeholder' => '', 'style' => 'width: 30em;'));
 	echo $this->Form->input('Attraction.city', array('id' => 'attraction-city', 'label' => 'Cidade:'));

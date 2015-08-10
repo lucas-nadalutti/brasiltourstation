@@ -258,6 +258,7 @@
 						array(
 							'controller' => 'attractions',
 							'action' => 'attractionsList',
+							'attractions',
 						),
 						array(
 							'class' => 'menu-item-link',
@@ -303,7 +304,8 @@
 						',
 						array(
 							'controller' => 'attractions',
-							'action' => 'restaurantsList',
+							'action' => 'attractionsList',
+							'restaurants',
 						),
 						array(
 							'class' => 'menu-item-link',
@@ -326,7 +328,8 @@
 						',
 						array(
 							'controller' => 'attractions',
-							'action' => 'shoppingsList',
+							'action' => 'attractionsList',
+							'shoppings',
 						),
 						array(
 							'class' => 'menu-item-link',

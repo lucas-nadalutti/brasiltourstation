@@ -1,0 +1,46 @@
+@import "_common";
+
+.restaurant-filter {
+	background-color: $restaurant-main-color;
+}
+
+.remove-restaurant-filter {
+	background-color: $restaurant-main-color;
+	border-left: 1px solid #7CB342;
+}
+
+.restaurant-filter-button {
+	a {
+	    box-shadow: 0 8px 0 $restaurant-darker-color, 0 15px 20px rgba(0, 0, 0, .35);
+	}
+
+	span {
+	    background-color: $restaurant-main-color;
+	}
+}
+
+.restaurant-qtip {
+	border: 2px solid $restaurant-main-color;
+
+	.qtip-close {
+		background-color: $restaurant-main-color;
+	}
+}
+
+.restaurant-qtip-arrows {
+	a {
+		background-color: $restaurant-main-color;
+	}
+}
+
+.attraction-restaurant-info-box {
+	background-color: $restaurant-main-color;
+}
+
+.attraction-restaurant-button {
+	background-color: $restaurant-darker-color;
+}
+
+.restaurant-tag {
+	background-color: $restaurant-lighter-color;
+}

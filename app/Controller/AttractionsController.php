@@ -28,21 +28,19 @@ class AttractionsController extends AppController {
 		echo json_encode($attractions);
 	}
 
-	public function attractionsList($tag = null) {
+	public function attractionsList($category = 'attractions') {
 		$this->loadModel('Tag');
 		$tags = $this->Tag->find('all', array(
 			// TODO: get session language and order by correct language name
-			'order' => 'name_pt'
+			'order' => 'name_pt',
 		));
 		$this->set('tags', $tags);
-	}
-
-	public function restaurantsList($tag = null) {
-
-	}
-
-	public function shoppingsList($tag = null) {
-
+		if ($category === 'restaurants') {
+			$this->render('restaurantsList');
+		}
+		else if ($category === 'shoppings') {
+			$this->render('shoppingsList');
+		}
 	}
 
 	public function show($id = null) {
@@ -99,6 +97,8 @@ class AttractionsController extends AppController {
 
 		// TODO: Optimize all queries in this action
 
+		$category = $this->request->query['attractionCategory'];
+
 		$start = $this->request->query['start'];
 		$limit = $this->request->query['limit'];
 		$sortCriterium = $this->request->query['sortCriterium'];
@@ -134,7 +134,7 @@ class AttractionsController extends AppController {
 		}
 
 		// Filters
-		$conditions = array();
+		$conditions = array('category' => $category);
 
 		if (isset($tags)) {
 			$sqlTags = '(' . implode(',', $tags) . ')';
@@ -150,7 +150,7 @@ class AttractionsController extends AppController {
 			';
 		}
 		if ($distance > 0) {
-			$conditions[] = array('distance <' => $distance);
+			$conditions['distance <'] = $distance;
 		}
 
 		$this->Attraction->Behaviors->load('Containable');

@@ -1,0 +1,46 @@
+@import "_common";
+
+.shopping-filter {
+	background-color: $shopping-main-color;
+}
+
+.remove-shopping-filter {
+	background-color: $shopping-main-color;
+	border-left: 1px solid #7CB342;
+}
+
+.shopping-filter-button {
+	a {
+	    box-shadow: 0 8px 0 $shopping-darker-color, 0 15px 20px rgba(0, 0, 0, .35);
+	}
+
+	span {
+	    background-color: $shopping-main-color;
+	}
+}
+
+.shopping-qtip {
+	border: 2px solid $shopping-main-color;
+
+	.qtip-close {
+		background-color: $shopping-main-color;
+	}
+}
+
+.shopping-qtip-arrows {
+	a {
+		background-color: $shopping-main-color;
+	}
+}
+
+.attraction-shopping-info-box {
+	background-color: $shopping-main-color;
+}
+
+.attraction-shopping-button {
+	background-color: $shopping-darker-color;
+}
+
+.shopping-tag {
+	background-color: $shopping-lighter-color;
+}

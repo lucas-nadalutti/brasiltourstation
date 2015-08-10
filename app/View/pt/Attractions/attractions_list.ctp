@@ -8,21 +8,21 @@
 		<div class="sorters-box">
 			<h2 class="filter-buttons-box-title">Ordenação</h2>
 			<?php
-				echo '<div class="filter-button">';
+				echo '<div class="filter-button attraction-filter-button">';
 				echo $this->Html->link(
 					'<span>Alfabética<i class="fa fa-sort-alpha-asc"></i></span>',
 					'javascript:void(0)',
 					array('class' => 'sort-criterium-button set-sort-criterium chosen-sort-criterium', 'data-sort-criterium' => 'alphabetic', 'escape' => false)
 				);
 				echo '</div>';
-				echo '<div class="filter-button">';
+				echo '<div class="filter-button attraction-filter-button">';
 				echo $this->Html->link(
 					'<span>Distância<i class="fa fa-map-marker"></i></span>',
 					'javascript:void(0)',
 					array('class' => 'sort-criterium-button set-sort-criterium', 'data-sort-criterium' => 'distance', 'escape' => false)
 				);
 				echo '</div>';
-				echo '<div class="filter-button">';
+				echo '<div class="filter-button attraction-filter-button">';
 				echo $this->Html->link(
 					'<span>Popularidade<i class="fa fa-line-chart"></i></span>',
 					'javascript:void(0)',
@@ -36,7 +36,7 @@
 	<div class="col-md-5">
 		<div class="filters-box">
 			<h2 class="filter-buttons-box-title">Filtros</h2>
-			<div class="filter-button">
+			<div class="filter-button attraction-filter-button">
 				<a href="javascript:void(0)" id="open-attraction-distance-filter-tooltip" class="distance-filter-button">
 					<span>Distância<i class="fa fa-map-marker"></i></span>
 				</a>
@@ -90,7 +90,7 @@
 				echo '</div>';
 			?>
 
-			<div class="filter-button">
+			<div class="filter-button attraction-filter-button">
 				<a href="javascript:void(0)" id="open-attraction-tag-filter-tooltip" class="tags-filter-button">
 					<span>Tags<i class="fa fa-tag"></i></span>
 				</a>
@@ -126,7 +126,7 @@
 
 				echo '</div>';
 
-				echo '<div id="attraction-tags-arrows"></div>';
+				echo '<div id="qtip-tags-arrows" class="attraction-qtip-arrows"></div>';
 				
 				echo '</div>';
 			?>
@@ -138,8 +138,8 @@
 <div id="attractions-list" class="col-md-12">
 
 	<div id="attractions-box">
-		<div id="loading-attractions" hidden></div>
-		<table id="attractions-table"></table>
+		<div id="loading-attractions" hidden><!-- TODO: use an icon -->Carregando...</div>
+		<table id="attractions-table" hidden></table>
 	</div>
 
 </div>
@@ -162,7 +162,7 @@
 				button: 'close'
 			},
 			style: {
-				classes: 'qtip-distance',
+				classes: 'attraction-qtip qtip-distance',
 				def: false
 			},
 		    position: {
@@ -189,7 +189,7 @@
 				button: 'close'
 			},
 			style: {
-				classes: 'qtip-tags',
+				classes: 'attraction-qtip qtip-tags',
 				def: false
 			},
 		    position: {
@@ -214,7 +214,7 @@
 						slidesToShow: 1,
 						slidesToScroll: 1,
 						arrows: true,
-						appendArrows: '#attraction-tags-arrows',
+						appendArrows: '#qtip-tags-arrows',
 						prevArrow: '<a class="btn btn-sm slick-prev"><i class="fa fa-angle-double-left"></i></a>',
 						nextArrow: '<a class="btn btn-sm slick-next"><i class="fa fa-angle-double-right"></i></a>',
 			    	});
@@ -267,8 +267,9 @@
 		var attractionsPerPage = 10;
 
 		requestParams = {
-			'start': attractionsPerPage * (page - 1),
-			'limit': attractionsPerPage
+			attractionCategory: 'Attraction',
+			start: attractionsPerPage * (page - 1),
+			limit: attractionsPerPage
 		};
 
 		// Set params for sorting/filtering
@@ -334,7 +335,7 @@
 	}
 
 	function createAttractionLeftDiv(attraction) {
-		var div = '<div class="attraction-info-box">';
+		var div = '<div class="attraction-info-box attraction-attraction-info-box">';
 
 		div += createButtonBox(attraction);
 		div += createAttractionInfoBox(attraction);
@@ -345,7 +346,7 @@
 	}
 
 	function createAttractionRightDiv(attraction) {
-		var div = '<div class="attraction-info-box">';
+		var div = '<div class="attraction-info-box attraction-attraction-info-box">';
 
 		div += createDistanceBox(attraction);
 		div += createAttractionInfoBox(attraction);
@@ -359,7 +360,7 @@
 		var attractionShow = wr+'attractions/show/'+attraction['Attraction']['id'];
 		var div = '';
 
-		div += '<a href="'+attractionShow+'" class="attraction-button">';
+		div += '<a href="'+attractionShow+'" class="attraction-button attraction-attraction-button">';
 		div += '<i class="fa fa-search"></i>';
 		div += '</a>';
 
@@ -422,9 +423,9 @@
 			// Convert to km, no decimal places
 			kmDistance = parseInt(distance / 1000);
 			
-			var span = '<span class="attraction-filter attraction-distance-filter" data-distance="'+distance+'">';
+			var span = '<span class="chosen-filter attraction-filter attraction-distance-filter" data-distance="'+distance+'">';
 			span += '<i class="fa fa-map-marker"></i> Até '+kmDistance+'km';
-			span += '<span class="remove-distance-filter"><i class="fa fa-times"></i></span>';
+			span += '<span class="remove-filter remove-attraction-filter remove-distance-filter"><i class="fa fa-times"></i></span>';
 			span += '</span>';
 			$chosenDistanceFilter.append(span);
 		}
@@ -435,9 +436,9 @@
 		$chosenTagFilters = $('#chosen-tag-filters');
 		// Add tag only if it isn't already in the filter
 		if ($chosenTagFilters.find('.attraction-tag-filter[data-tag-id="'+id+'"]').length == 0) {
-			var span = '<span class="attraction-filter attraction-tag-filter" data-tag-id="'+id+'">';
+			var span = '<span class="chosen-filter attraction-filter attraction-tag-filter" data-tag-id="'+id+'">';
 			span += '<i class="fa fa-tag"></i> ' + name;
-			span += '<span class="remove-tag-filter"><i class="fa fa-times"></i></span>';
+			span += '<span class="remove-filter remove-attraction-filter remove-tag-filter"><i class="fa fa-times"></i></span>';
 			span += '</span>';
 			$chosenTagFilters.append(span);
 			getAttractions();

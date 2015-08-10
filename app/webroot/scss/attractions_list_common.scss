@@ -1,0 +1,193 @@
+@import "_common";
+
+#attractions-list-title {
+	margin-bottom: 0;
+}
+
+.chosen-filter {
+	margin-right: 0.5em;
+	padding: 0.3em 0.5em;
+	color: #ffffff;
+	font-size: 0.5em;
+	border-radius: 0.2em;
+}
+
+.remove-filter {
+	margin-left: 0.25em;
+	padding-left: 0.25em;
+	font-size: 1.2em;
+	cursor: pointer;
+}
+
+.filter-buttons-box {
+	margin-top: 1em;
+	text-align: center;
+}
+
+.filter-buttons-box-title {
+	margin-top: 0;
+	font-size: 1.5em;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+
+.filter-button {
+	width: 11em;
+	margin: 0 0.7em;
+    display: inline-block;
+
+    a {
+		width: 100%;
+		text-align: center;
+	    display: block;
+	    color: #ffffff !important;
+	    border-radius: 0.5em;
+	    transition: box-shadow .1s ease-in-out;
+
+	    &:focus, &.chosen-sort-criterium {
+	    	span {
+	    		transform: translate(0, 4px);
+	    	}
+	    }
+	}
+
+	span {
+		width: 100%;
+	    padding: 0.5em 1em;
+	    display: inline-block;
+		font-weight: bold;
+	    border-radius: 0.5em;
+	    box-shadow: inset 0 -1px 1px rgba(255, 255, 255, .15);
+	    text-shadow: 0 -1px 1px rgba(175, 49, 95, .7);
+	    transition: background-color .2s ease-in-out, transform .1s ease-in-out;
+
+	    .fa {
+			margin-left: 0.7em;
+		}
+	}
+}
+
+.sorters-box, .filters-box {
+	padding-bottom: 1.7em;
+	border-radius: 0.7em;
+}
+
+#attraction-distance-filter-tooltip {
+	font-size: 2em;
+}
+
+#attraction-tag-filter-tooltip {
+	/* XXX: Fixed width is needed for Slick plugin to render correctly */
+	width: 10em;
+	font-size: 1.5em;
+}
+
+.qtip {
+	background-color: #ffffff;
+	border: 2px solid #000000;
+	border-radius: 0.7em;
+	line-height: normal;
+	box-shadow: 2px 2px 2px 2px #666666;
+}
+
+.qtip-close {
+	text-align: center;
+	color: #ffffff;
+	font-size: 2em;
+	border: 1px solid #ffffff;
+}
+
+#qtip-tags-arrows {
+	width: 70%;
+	margin: 0.5em auto;
+
+	a {
+		color: #ffffff !important;
+
+		&.slick-prev {
+			float: left;
+		}
+
+		&.slick-next {
+			float: right;
+		}
+	}
+}
+
+.tag-td {
+	padding-left: 2em;
+}
+
+#attractions-list {
+	margin-top: 2em;
+	text-align: center;
+}
+
+#attractions-box {
+	height: 28em;
+}
+
+#attractions-table {
+	width: 90%;
+	margin: 0 auto;
+
+	td {
+		width: 50%;
+		padding-bottom: 1em;
+	}
+}
+
+.attraction-info-box {
+	width: 90%;
+	height: 4.5em;
+	margin: 0 auto;
+	padding: 0.5em 0;
+	border-radius: 0.5em;
+}
+
+.attraction-button {
+	width: 10%;
+	height: 100%;
+	margin: 0 5%;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 2.2em;
+	color: #ffffff !important;
+	border-radius: 0.3em;
+	box-shadow: 0 3px 8px -4px #000000;
+}
+
+.attraction-info {
+	width: 60%;
+	height: 100%;
+	text-align: left;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.attraction-name {
+	margin-bottom: 0.3em;
+}
+
+.attraction-tags-box {
+	font-size: 0.8em;
+
+	span {
+		margin-right: 0.2em;
+		padding: 0.2em 0.5em;
+		font-style: italic;
+		border-radius: 0.2em;
+	}
+}
+
+.attraction-distance-box {
+	width: 20%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.attraction-distance-icon {
+	img {
+		width: 55%;
+	}
+}

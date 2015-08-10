@@ -1,3 +1,12 @@
+/*
+
+http://www.google.com.br/design/spec/style/color.html#color-color-palette
+
+main -> 500
+lighter -> 300
+darker -> 700
+
+*/
 #attraction-video-wrapper {
   width: 100%;
   height: 0;
@@ -49,24 +58,69 @@
   .travel-mode-disabled .travel-mode-text {
     background-color: #ee0000; }
 
+/*
+
+http://www.google.com.br/design/spec/style/color.html#color-color-palette
+
+main -> 500
+lighter -> 300
+darker -> 700
+
+*/
+.attraction-filter {
+  background-color: #8BC34A; }
+
+.remove-attraction-filter {
+  background-color: #8BC34A;
+  border-left: 1px solid #7CB342; }
+
+.attraction-filter-button a {
+  box-shadow: 0 8px 0 #689F38, 0 15px 20px rgba(0, 0, 0, 0.35); }
+
+.attraction-filter-button span {
+  background-color: #8BC34A; }
+
+.attraction-qtip {
+  border: 2px solid #8BC34A; }
+  .attraction-qtip .qtip-close {
+    background-color: #8BC34A; }
+
+.attraction-qtip-arrows a {
+  background-color: #8BC34A; }
+
+.attraction-attraction-info-box {
+  background-color: #8BC34A; }
+
+.attraction-attraction-button {
+  background-color: #689F38; }
+
+.attraction-tag {
+  background-color: #AED581; }
+
+/*
+
+http://www.google.com.br/design/spec/style/color.html#color-color-palette
+
+main -> 500
+lighter -> 300
+darker -> 700
+
+*/
 #attractions-list-title {
   margin-bottom: 0; }
 
-.attraction-filter {
+.chosen-filter {
   margin-right: 0.5em;
   padding: 0.3em 0.5em;
   color: #ffffff;
-  background-color: #8BC34A;
   font-size: 0.5em;
   border-radius: 0.2em; }
 
-.remove-distance-filter, .remove-tag-filter {
+.remove-filter {
   margin-left: 0.25em;
   padding-left: 0.25em;
   font-size: 1.2em;
-  cursor: pointer;
-  background-color: #8BC34A;
-  border-left: 1px solid #7CB342; }
+  cursor: pointer; }
 
 .filter-buttons-box {
   margin-top: 1em;
@@ -78,10 +132,6 @@
   font-weight: bold;
   letter-spacing: 2px; }
 
-.sorters-box, .filters-box {
-  padding-bottom: 1.7em;
-  border-radius: 0.7em; }
-
 .filter-button {
   width: 11em;
   margin: 0 0.7em;
@@ -92,7 +142,6 @@
     display: block;
     color: #ffffff !important;
     border-radius: 0.5em;
-    box-shadow: 0 8px 0 #689F38, 0 15px 20px rgba(0, 0, 0, 0.35);
     transition: box-shadow 0.1s ease-in-out; }
     .filter-button a:focus span, .filter-button a.chosen-sort-criterium span {
       transform: translate(0, 4px); }
@@ -102,20 +151,15 @@
     display: inline-block;
     font-weight: bold;
     border-radius: 0.5em;
-    background-color: #8BC34A;
     box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.15);
     text-shadow: 0 -1px 1px rgba(175, 49, 95, 0.7);
     transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out; }
     .filter-button span .fa {
       margin-left: 0.7em; }
 
-.qtip {
-  background-color: #ffffff;
-  border: 2px solid #000000;
-  border-radius: 0.7em;
-  line-height: normal;
-  box-shadow: 2px 2px 2px 2px #666666;
-  border: 2px solid #8BC34A; }
+.sorters-box, .filters-box {
+  padding-bottom: 1.7em;
+  border-radius: 0.7em; }
 
 #attraction-distance-filter-tooltip {
   font-size: 2em; }
@@ -125,21 +169,28 @@
   width: 10em;
   font-size: 1.5em; }
 
-#attraction-tags-arrows {
-  width: 70%;
-  margin: 0.5em auto; }
-  #attraction-tags-arrows a {
-    color: #ffffff !important;
-    background-color: #8BC34A; }
-    #attraction-tags-arrows a.slick-prev {
-      float: left; }
-    #attraction-tags-arrows a.slick-next {
-      float: right; }
+.qtip {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 0.7em;
+  line-height: normal;
+  box-shadow: 2px 2px 2px 2px #666666; }
 
 .qtip-close {
-  background-color: #000000;
+  text-align: center;
   color: #ffffff;
-  font-size: 1em; }
+  font-size: 2em;
+  border: 1px solid #ffffff; }
+
+#qtip-tags-arrows {
+  width: 70%;
+  margin: 0.5em auto; }
+  #qtip-tags-arrows a {
+    color: #ffffff !important; }
+    #qtip-tags-arrows a.slick-prev {
+      float: left; }
+    #qtip-tags-arrows a.slick-next {
+      float: right; }
 
 .tag-td {
   padding-left: 2em; }
@@ -163,8 +214,7 @@
   height: 4.5em;
   margin: 0 auto;
   padding: 0.5em 0;
-  border-radius: 0.5em;
-  background-color: #8BC34A; }
+  border-radius: 0.5em; }
 
 .attraction-button {
   width: 10%;
@@ -174,7 +224,6 @@
   vertical-align: top;
   font-size: 2.2em;
   color: #ffffff !important;
-  background-color: #689F38;
   border-radius: 0.3em;
   box-shadow: 0 3px 8px -4px #000000; }
 
@@ -190,13 +239,11 @@
 
 .attraction-tags-box {
   font-size: 0.8em; }
-
-.attraction-tag {
-  margin-right: 0.2em;
-  padding: 0.2em 0.5em;
-  font-style: italic;
-  background-color: #AED581;
-  border-radius: 0.2em; }
+  .attraction-tags-box span {
+    margin-right: 0.2em;
+    padding: 0.2em 0.5em;
+    font-style: italic;
+    border-radius: 0.2em; }
 
 .attraction-distance-box {
   width: 20%;
@@ -206,6 +253,15 @@
 .attraction-distance-icon img {
   width: 55%; }
 
+/*
+
+http://www.google.com.br/design/spec/style/color.html#color-color-palette
+
+main -> 500
+lighter -> 300
+darker -> 700
+
+*/
 h1 {
   margin-top: 0.2em; }
 
@@ -219,6 +275,15 @@ a:hover, a:focus, a:active {
 .grid-wrapper {
   margin: 0.5em 0; }
 
+/*
+
+http://www.google.com.br/design/spec/style/color.html#color-color-palette
+
+main -> 500
+lighter -> 300
+darker -> 700
+
+*/
 #header {
   margin-top: 1em;
   margin-bottom: 0.5em; }
@@ -350,6 +415,15 @@ a:hover, a:focus, a:active {
 .menu-icon {
   font-size: 2.5em; }
 
+/*
+
+http://www.google.com.br/design/spec/style/color.html#color-color-palette
+
+main -> 500
+lighter -> 300
+darker -> 700
+
+*/
 #hotel-photos {
   text-align: center; }
   #hotel-photos a {
@@ -365,6 +439,93 @@ a:hover, a:focus, a:active {
     width: 100%;
     height: 100%; }
 
+/*
+
+http://www.google.com.br/design/spec/style/color.html#color-color-palette
+
+main -> 500
+lighter -> 300
+darker -> 700
+
+*/
+.restaurant-filter {
+  background-color: #FFC107; }
+
+.remove-restaurant-filter {
+  background-color: #FFC107;
+  border-left: 1px solid #7CB342; }
+
+.restaurant-filter-button a {
+  box-shadow: 0 8px 0 #FFA000, 0 15px 20px rgba(0, 0, 0, 0.35); }
+
+.restaurant-filter-button span {
+  background-color: #FFC107; }
+
+.restaurant-qtip {
+  border: 2px solid #FFC107; }
+  .restaurant-qtip .qtip-close {
+    background-color: #FFC107; }
+
+.restaurant-qtip-arrows a {
+  background-color: #FFC107; }
+
+.attraction-restaurant-info-box {
+  background-color: #FFC107; }
+
+.attraction-restaurant-button {
+  background-color: #FFA000; }
+
+.restaurant-tag {
+  background-color: #FFD54F; }
+
+/*
+
+http://www.google.com.br/design/spec/style/color.html#color-color-palette
+
+main -> 500
+lighter -> 300
+darker -> 700
+
+*/
+.shopping-filter {
+  background-color: #F44336; }
+
+.remove-shopping-filter {
+  background-color: #F44336;
+  border-left: 1px solid #7CB342; }
+
+.shopping-filter-button a {
+  box-shadow: 0 8px 0 #D32F2F, 0 15px 20px rgba(0, 0, 0, 0.35); }
+
+.shopping-filter-button span {
+  background-color: #F44336; }
+
+.shopping-qtip {
+  border: 2px solid #F44336; }
+  .shopping-qtip .qtip-close {
+    background-color: #F44336; }
+
+.shopping-qtip-arrows a {
+  background-color: #F44336; }
+
+.attraction-shopping-info-box {
+  background-color: #F44336; }
+
+.attraction-shopping-button {
+  background-color: #D32F2F; }
+
+.shopping-tag {
+  background-color: #E57373; }
+
+/*
+
+http://www.google.com.br/design/spec/style/color.html#color-color-palette
+
+main -> 500
+lighter -> 300
+darker -> 700
+
+*/
 #totem-home-map-canvas-box {
   height: 55vh; }
 
