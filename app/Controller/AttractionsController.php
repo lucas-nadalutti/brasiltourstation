@@ -82,7 +82,7 @@ class AttractionsController extends AppController {
 			$this->request->data['AttractionTag'] = $attractionTags;
 			// Remove Video part of data if "attraction has no video" box was checked
 			if ($this->request->data['Attraction']['has_no_video']) {
-				unset($this->request->data['Video']);
+				unset($this->request->data['Hotel']['Video']);
 			}
 			if ($this->Attraction->saveAll($this->request->data)) {
 				$this->Session->setFlash(__('Atração cadastrada com sucesso'), 'default', array('class' => 'post-success message'));

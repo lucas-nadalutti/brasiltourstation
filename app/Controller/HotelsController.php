@@ -100,6 +100,8 @@ class HotelsController extends AppController {
 		$videoId = $userHotel['Hotel']['video_id'];
 		if ($videoId) {
 			$video = $this->Hotel->Video->findById($videoId);
+			$url = $video['Video']['url'];
+			$video['Video']['file_path'] = $this->Hotel->Video->getFilesPath($url);
 			$this->set('video', $video);
 		}
 	}

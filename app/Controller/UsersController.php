@@ -44,7 +44,11 @@ class UsersController extends AppController {
 	public function create() {
 		if ($this->request->is('post')) {
 			$this->User->create();
-			if ($this->User->saveAssociated($this->request->data)) {
+			// Remove Video part of data if "hotel has no video" box was checked
+			if ($this->request->data['Hotel']['has_no_video']) {
+				unset($this->request->data['Video']);
+			}
+			if ($this->User->saveAssociated($this->request->data, array('deep' => true))) {
 				$this->Session->setFlash(__('Usuário criado com sucesso: e-mail enviado para') . ' ' . $this->request->data['User']['email'], 'default', array('class' => 'post-success message'));
 				return $this->redirect(array('action' => 'controlPanel'));
 			}

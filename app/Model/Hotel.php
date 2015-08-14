@@ -37,7 +37,7 @@ class Hotel extends AppModel {
 		// Create AttractionHotel records relating the newly created hotel
 		// with every existing attraction
 		if ($created) {
-			$this->AttractionHotel->createFromHotel($this->id);
+			$this->AttractionHotel->createFromHotel($this->data);
 		}
 	}
 
