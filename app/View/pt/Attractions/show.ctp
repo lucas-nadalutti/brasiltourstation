@@ -3,7 +3,7 @@
 		<div id="attraction-video-wrapper">
 			<?php
 				if ($attraction['Video']['id']) {
-					echo '<video class="video-js vjs-default-skin" controls preload="auto">';
+					echo '<video id="attraction-video" class="video-js vjs-default-skin">';
 					echo '<source src="';
 					echo $this->webroot . $attraction['Video']['file_path'];
 					echo '" type="';
@@ -83,21 +83,44 @@
 ?>
 
 <script>
-	/*** Manipulation of travel mode options behaviour ***/
+	$(document).ready(function() {
 
-	$('.travel-mode-option').change(function() {
-		var $checked = $('input[name=travel-mode]:checked');
+		/*** Attraction video ***/
 
-		// Reset all labels' colors
-		$('.travel-mode-label').each(function() {
-			$(this).removeClass('travel-mode-selected');
+		if ($('#attraction-video').length) {
+			videojs('attraction-video', {controls: true, preload: 'auto'}, function() {
+
+				var player = this;
+
+				$('#hotel-video').click(function() {
+					// When user clicks, the video starts playing before the click event triggers
+					if (!player.paused()) {
+						player.requestFullscreen();
+					}
+				});
+
+				player.on('ended', function() {
+					player.exitFullscreen();
+				});
+
+			});
+		}
+
+		/*** Manipulation of travel mode options behaviour ***/
+
+		$('.travel-mode-option').change(function() {
+			var $checked = $('input[name=travel-mode]:checked');
+
+			// Reset all labels' colors
+			$('.travel-mode-label').each(function() {
+				$(this).removeClass('travel-mode-selected');
+			});
+
+			var travelMode = $checked.val();
+			calculateRoute(travelMode);
 		});
 
-		var travelMode = $checked.val();
-		calculateRoute(travelMode);
 	});
-
-	/*** End of travel mode options behaviour manipulation ***/
 
 	var directionsDisplay;
 	var directionsService = new google.maps.DirectionsService();

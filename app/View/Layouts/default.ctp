@@ -28,12 +28,10 @@
 		echo $this->Html->css(
 			'//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'
 		);
-		// echo $this->Html->css('bootstrap.min.css');
 
 		echo $this->Html->css(
 			'//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'
 		);
-		// echo $this->Html->css('font-awesome.min.css');
 
 		echo $this->Html->css('slick');
 		echo $this->Html->css('bootstrap-tagsinput');
@@ -45,21 +43,17 @@
 		echo $this->Html->script(
 			'//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'
 		);
-		// echo $this->Html->script('jquery.min.js');
 
 		echo $this->Html->script(
 			'//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'
 		);
-		// echo $this->Html->script('bootstrap.min.js');
 
 		echo $this->Html->script('//vjs.zencdn.net/4.12/video.js');
-		// echo $this->Html->script('video.js');
 
 		echo $this->Html->script('//maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places');
 		echo $this->Html->script('slick.min');
 		echo $this->Html->script('bootstrap-tagsinput.min');
 		echo $this->Html->script('bootpag.min');
-		// echo $this->Html->script('jquery.twbsPagination.min');
 		echo $this->Html->script('jquery.qtip.min');
 		echo $this->Html->script('typeahead');
 		echo $this->Html->script('plupload.full.min');

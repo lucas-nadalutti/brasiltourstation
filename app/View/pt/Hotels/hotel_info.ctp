@@ -5,7 +5,7 @@
 		<div id="attraction-video-wrapper">
 			<?php
 				if (isset($video)) {
-					echo '<video class="video-js vjs-default-skin" controls preload="auto">';
+					echo '<video id="hotel-video" class="video-js vjs-default-skin">';
 					echo '<source src="';
 					echo $this->webroot . $video['Video']['file_path'];
 					echo '" type="';
@@ -61,6 +61,23 @@
 <script>
 
 	$(document).ready(function() {
+
+		videojs('hotel-video', {controls: true, preload: 'auto'}, function() {
+
+			var player = this;
+
+			$('#hotel-video').click(function() {
+				// When user clicks, the video starts playing before the click event triggers
+				if (!player.paused()) {
+					player.requestFullscreen();
+				}
+			});
+
+			player.on('ended', function() {
+				player.exitFullscreen();
+			});
+
+		});
 
 		$('#hotel-photos').slick({
 			centerMode: true,
