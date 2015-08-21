@@ -146,8 +146,14 @@ class HotelsController extends AppController {
 		$this->autoRender = false;
 		$userHotel = $this->Auth->user();
 		if ($this->request->is('post')) {
-			$this->Hotel->id = $userHotel['Hotel']['id'];
-			$this->Hotel->saveField('last_life_sign', date('Y-m-d H:i:s'));
+			if ($userHotel && $userHotel['User']['role'] === 'Cliente') {
+				$this->Hotel->id = $userHotel['Hotel']['id'];
+				$this->Hotel->saveField('last_life_sign', date('Y-m-d H:i:s'));
+			}
+			else {
+				# TODO: Send an email alert when a life sign was sent without a logged user
+				echo 'not logged in';
+			}
 		}
 	}
 

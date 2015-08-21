@@ -69,7 +69,7 @@
 </head>
 <body>
 
-	<?php if ($signedUser && $signedUser['role'] == 'Cliente'): ?>
+	<?php if ($signedUser && $signedUser['role'] === 'Cliente'): ?>
 		<!-- TOTEM LAYOUT -->
 
 		<!-- Remove scrollbar in browsers that support this removal -->
