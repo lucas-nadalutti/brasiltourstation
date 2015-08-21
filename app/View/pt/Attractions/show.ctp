@@ -103,6 +103,17 @@
 					player.exitFullscreen();
 				});
 
+				player.on('fullscreenchange', function() {
+					// Stop playing video if user exists fullscreen
+					if (!player.isFullscreen()) {
+						player.pause();
+						$('.vjs-control-bar').hide();
+					}
+					else {
+						$('.vjs-control-bar').show();
+					}
+				});
+
 			});
 		}
 
