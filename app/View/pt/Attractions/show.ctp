@@ -92,26 +92,27 @@
 
 				var player = this;
 
-				$('#hotel-video').click(function() {
-					// When user clicks, the video starts playing before the click event triggers
-					if (!player.paused()) {
-						player.requestFullscreen();
-					}
+				player.on('play', function() {
+					$('.vjs-big-play-button').hide();
+
+					var width = $('#attraction-video-box').parent().width();
+					var height = $('#content').height();
+
+					// XXX: Ugly hack to achieve video full screen inside #content only
+					// TODO: Find a cleaner solution
+					$('<style type="text/css"> .video-custom-fullscreen{ width: '+width+'px !important; height: '+height+'px !important; position: absolute !important; top: 0 !important; left: 0 !important; z-index: 999 !important;} </style>').appendTo('head');
+
+					$('#attraction-video').addClass('video-custom-fullscreen');
+				});
+
+				player.on('pause', function() {
+					$('.vjs-big-play-button').show();
+					$('#attraction-video').removeClass('video-custom-fullscreen');
 				});
 
 				player.on('ended', function() {
-					player.exitFullscreen();
-				});
-
-				player.on('fullscreenchange', function() {
-					// Stop playing video if user exists fullscreen
-					if (!player.isFullscreen()) {
-						player.pause();
-						$('.vjs-control-bar').hide();
-					}
-					else {
-						$('.vjs-control-bar').show();
-					}
+					$('.vjs-big-play-button').show();
+					$('#attraction-video').removeClass('video-custom-fullscreen');
 				});
 
 			});

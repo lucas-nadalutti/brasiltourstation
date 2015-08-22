@@ -189,6 +189,6 @@
   margin: auto !important;
 }
 
-.vjs-control-bar {
-	display: none;
+.vjs-volume-control, .vjs-mute-control, .vjs-fullscreen-control { 
+    display: none; 
 }

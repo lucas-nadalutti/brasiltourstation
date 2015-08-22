@@ -1,8 +1,8 @@
 <h1>Sobre o Hotel</h1>
 
 <div class="col-md-12 grid-wrapper">
-	<div id="attraction-video-box" class="col-md-5">
-		<div id="attraction-video-wrapper">
+	<div id="hotel-video-box" class="col-md-5">
+		<div id="hotel-video-wrapper">
 			<?php
 				if (isset($video)) {
 					echo '<video id="hotel-video" class="video-js vjs-default-skin">';
@@ -20,14 +20,14 @@
 		</div>
 	</div>
 
-	<div id="attraction-description-box" class="col-md-7">
+	<div id="hotel-description-box" class="col-md-7">
 		<h3><?php echo $userHotel['name']; ?></h3>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 	</div>
 </div>
 
 <div class="col-md-12 grid-wrapper">
-	<div id="attraction-video-box" class="col-md-7">
+	<div class="col-md-7">
 		<h2>Galeria</h2>
 
 		<div id="hotel-photos">
@@ -49,7 +49,7 @@
 		</div>
 	</div>
 	<div id="attraction-video-box" class="col-md-5">
-		<h2>Horários</h2>
+		<h2>Programação</h2>
 
 		<p>7 às 10h - Café da manhã</p>
 		<p>12h às 15h - Almoço</p>
@@ -66,26 +66,27 @@
 
 			var player = this;
 
-			$('#hotel-video').click(function() {
-				// When user clicks, the video starts playing before the click event triggers
-				if (!player.paused()) {
-					player.requestFullscreen();
-				}
+			player.on('play', function() {
+				$('.vjs-big-play-button').hide();
+
+				var width = $('#hotel-video-box').parent().width();
+				var height = $('#content').height();
+
+				// XXX: Ugly hack to achieve video full screen inside #content only
+				// TODO: Find a cleaner solution
+				$('<style type="text/css"> .video-custom-fullscreen{ width: '+width+'px !important; height: '+height+'px !important; position: absolute !important; top: 0 !important; left: 0 !important; z-index: 999 !important;} </style>').appendTo('head');
+
+				$('#hotel-video').addClass('video-custom-fullscreen');
+			});
+
+			player.on('pause', function() {
+				$('.vjs-big-play-button').show();
+				$('#hotel-video').removeClass('video-custom-fullscreen');
 			});
 
 			player.on('ended', function() {
-				player.exitFullscreen();
-			});
-
-			player.on('fullscreenchange', function() {
-				// Stop playing video if user exists fullscreen
-				if (!player.isFullscreen()) {
-					player.pause();
-					$('.vjs-control-bar').hide();
-				}
-				else {
-					$('.vjs-control-bar').show();
-				}
+				$('.vjs-big-play-button').show();
+				$('#hotel-video').removeClass('video-custom-fullscreen');
 			});
 
 		});
