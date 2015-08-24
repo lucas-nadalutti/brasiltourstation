@@ -1,0 +1,46 @@
+@import "_common";
+
+.package-filter {
+	background-color: $packages-main-color;
+}
+
+.remove-package-filter {
+	background-color: $packages-main-color;
+	border-left: 1px solid #7CB342;
+}
+
+.package-filter-button {
+	a {
+	    box-shadow: 0 8px 0 $packages-darker-color, 0 15px 20px rgba(0, 0, 0, .35);
+	}
+
+	span {
+	    background-color: $packages-main-color;
+	}
+}
+
+.package-qtip {
+	border: 2px solid $packages-main-color;
+
+	.qtip-close {
+		background-color: $packages-main-color;
+	}
+}
+
+.package-qtip-arrows {
+	a {
+		background-color: $packages-main-color;
+	}
+}
+
+.attraction-package-info-box {
+	background-color: $packages-main-color;
+}
+
+.attraction-package-button {
+	background-color: $packages-darker-color;
+}
+
+.package-tag {
+	background-color: $packages-lighter-color;
+}

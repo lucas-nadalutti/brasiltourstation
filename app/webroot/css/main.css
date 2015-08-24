@@ -275,15 +275,6 @@ a:hover, a:focus, a:active {
 .grid-wrapper {
   margin: 0.5em 0; }
 
-/*
-
-http://www.google.com.br/design/spec/style/color.html#color-color-palette
-
-main -> 500
-lighter -> 300
-darker -> 700
-
-*/
 #header {
   margin-top: 1em;
   margin-bottom: 0.5em; }
@@ -448,6 +439,45 @@ darker -> 700
   .photo-slide img {
     width: 100%;
     height: 100%; }
+
+/*
+
+http://www.google.com.br/design/spec/style/color.html#color-color-palette
+
+main -> 500
+lighter -> 300
+darker -> 700
+
+*/
+.package-filter {
+  background-color: #FF5722; }
+
+.remove-package-filter {
+  background-color: #FF5722;
+  border-left: 1px solid #7CB342; }
+
+.package-filter-button a {
+  box-shadow: 0 8px 0 #E64A19, 0 15px 20px rgba(0, 0, 0, 0.35); }
+
+.package-filter-button span {
+  background-color: #FF5722; }
+
+.package-qtip {
+  border: 2px solid #FF5722; }
+  .package-qtip .qtip-close {
+    background-color: #FF5722; }
+
+.package-qtip-arrows a {
+  background-color: #FF5722; }
+
+.attraction-package-info-box {
+  background-color: #FF5722; }
+
+.attraction-package-button {
+  background-color: #E64A19; }
+
+.package-tag {
+  background-color: #FF8A65; }
 
 /*
 
