@@ -479,6 +479,11 @@ darker -> 700
 .package-tag {
   background-color: #FF8A65; }
 
+.package-reservation-box {
+  width: 20%;
+  display: inline-block;
+  vertical-align: top; }
+
 /*
 
 http://www.google.com.br/design/spec/style/color.html#color-color-palette

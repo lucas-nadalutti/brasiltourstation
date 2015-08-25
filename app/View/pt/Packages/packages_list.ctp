@@ -17,13 +17,6 @@
 				echo '</div>';
 				echo '<div class="filter-button package-filter-button">';
 				echo $this->Html->link(
-					'<span>Distância<i class="fa fa-map-marker"></i></span>',
-					'javascript:void(0)',
-					array('class' => 'sort-criterium-button set-sort-criterium', 'data-sort-criterium' => 'distance', 'escape' => false)
-				);
-				echo '</div>';
-				echo '<div class="filter-button package-filter-button">';
-				echo $this->Html->link(
 					'<span>Popularidade<i class="fa fa-line-chart"></i></span>',
 					'javascript:void(0)',
 					array('class' => 'sort-criterium-button set-sort-criterium', 'data-sort-criterium' => 'popularity', 'escape' => false)
@@ -36,60 +29,6 @@
 	<div class="col-md-5">
 		<div class="filters-box">
 			<h2 class="filter-buttons-box-title">Filtros</h2>
-			<div class="filter-button package-filter-button">
-				<a href="javascript:void(0)" id="open-attraction-distance-filter-tooltip" class="distance-filter-button">
-					<span>Distância<i class="fa fa-map-marker"></i></span>
-				</a>
-			</div>
-			<?php
-				echo '<div id="attraction-distance-filter-tooltip" hidden>';
-
-				echo '<div>';
-				echo $this->Html->link(
-					'Qualquer',
-					'javascript:void(0)',
-					array('class' => 'set-distance-filter', 'style')
-				);
-				echo '</div>';
-				echo '<div>';
-				echo $this->Html->link(
-					'Até 1km',
-					'javascript:void(0)',
-					array('class' => 'set-distance-filter', 'data-distance' => '1000')
-				);
-				echo '</div>';
-				echo '<div>';
-				echo $this->Html->link(
-					'Até 3km',
-					'javascript:void(0)',
-					array('class' => 'set-distance-filter', 'data-distance' => '3000')
-				);
-				echo '</div>';
-				echo '<div>';
-				echo $this->Html->link(
-					'Até 5km',
-					'javascript:void(0)',
-					array('class' => 'set-distance-filter', 'data-distance' => '5000')
-				);
-				echo '</div>';
-				echo '<div>';
-				echo $this->Html->link(
-					'Até 10km',
-					'javascript:void(0)',
-					array('class' => 'set-distance-filter', 'data-distance' => '10000')
-				);
-				echo '</div>';
-				echo '<div>';
-				echo $this->Html->link(
-					'Até 20km',
-					'javascript:void(0)',
-					array('class' => 'set-distance-filter', 'data-distance' => '20000')
-				);
-				echo '</div>';
-
-				echo '</div>';
-			?>
-
 			<div class="filter-button package-filter-button">
 				<a href="javascript:void(0)" id="open-attraction-tag-filter-tooltip" class="tags-filter-button">
 					<span>Tags<i class="fa fa-tag"></i></span>
@@ -144,43 +83,12 @@
 
 </div>
 
-<script id="attractions-json-info" type="application/json">
-	{"total": <?php echo $attractionsTotal ?> }
-</script>
-
 <script>
 	
 	$(document).ready(function() {
 
 		// Retrieve attractions that will appear as soon as page loads
-		getAttractions();
-
-		// Configure distance tooltip
-		$('#open-attraction-distance-filter-tooltip').qtip({
-			content: {
-				text: $('#attraction-distance-filter-tooltip'),
-				button: 'close'
-			},
-			style: {
-				classes: 'package-qtip qtip-distance',
-				def: false
-			},
-		    position: {
-		        my: 'top left',
-		        at: 'bottom left',
-		        target: $('#open-attraction-distance-filter-tooltip'),
-		        adjust: {
-		        	y: 10
-		        }
-		    },
-		    show: {
-		        event: 'click',
-		        solo: true
-		    },
-		    hide: {
-		        event: 'unfocus'
-		    }
-		});
+		getPackages();
 
 		// Configure tag tooltip
 		$('#open-attraction-tag-filter-tooltip').qtip({
@@ -227,67 +135,53 @@
     		$('.set-sort-criterium').removeClass('chosen-sort-criterium');
     		$(this).addClass('chosen-sort-criterium');
     		// Keep user in the current page when changing sorting criterium
-    		getAttractions($('.pagination.bootpag li.active').data('lp'));
+    		getPackages($('.pagination.bootpag li.active').data('lp'));
     	});
-
-    	$('.set-distance-filter').click(function() {
-    		setDistanceFilter($(this).data('distance'));
-    	})
 
     	$('.add-tag-filter').click(function() {
     		var $tag = $(this);
     		addTagToFilter($tag.data('tag-id'), $tag.data('tag-name'));
     	});
 
-    	$('#attractions-list-title').on('click', '.remove-distance-filter', function() {
-    		setDistanceFilter(0);
-    		$(this).parent().remove();
-    		getAttractions();
-    	});
-
     	$('#attractions-list-title').on('click', '.remove-tag-filter', function() {
     		$(this).parent().remove();
-    		getAttractions();
+    		getPackages();
     	});
 
     	// Event that is fired when user goes to another attractions page
 		$('#attractions-list').on('page', function(event, page) {
-	         getAttractions(page);
+	         getPackages(page);
 	    });
 
 	});
 
-	function getAttractions(page) {
+	function getPackages(page) {
 		startLoading();
 
 		// If page is not passed, set to 1
 		page = typeof page !== 'undefined' ? page : 1;
 		$('#attractions-list').bootpag({page: page});
 
-		var attractionsPerPage = 10;
+		var packagesPerPage = 10;
 
 		requestParams = {
-			attractionCategory: 'package',
-			start: attractionsPerPage * (page - 1),
-			limit: attractionsPerPage
+			start: packagesPerPage * (page - 1),
+			limit: packagesPerPage
 		};
 
 		// Set params for sorting/filtering
 		requestParams.sortCriterium = $('.chosen-sort-criterium').data('sort-criterium');
-
-		var distance = $('#chosen-distance-filter').find('.attraction-distance-filter').data('distance');
-		requestParams.distance = distance ? distance : 0;
 
 		requestParams.tags = [];
 		$('#chosen-tag-filters').find('.attraction-tag-filter').each(function() {
 			requestParams.tags.push($(this).data('tag-id'));
 		});
 
-		$.get(wr+'attractions/getAttractions', requestParams, function(data) {
+		$.get(wr+'packages/getPackages', requestParams, function(data) {
 			var data = $.parseJSON(data);
-			var attractions = data.attractions;
+			var packages = data.packages;
 
-			fillTable($('#attractions-table'), attractions, attractionsPerPage);
+			fillTable($('#attractions-table'), packages, packagesPerPage);
 
 	    	var bootpagProperties = {
 	            maxVisible: 5,
@@ -299,7 +193,7 @@
 		        last: '>>'
 		    };
 
-    		var total = Math.ceil(data.total / attractionsPerPage);
+    		var total = Math.ceil(data.total / packagesPerPage);
 
     		// Show at least 1 page
     		bootpagProperties.total = Math.max(total, 1);
@@ -308,25 +202,25 @@
 		});
 	}
 
-	function fillTable($table, attractions, attractionsPerPage) {
+	function fillTable($table, packages, packagesPerPage) {
 		$table.empty();
 		// TODO: Fill table in a smarter and cleaner way
-		var rows = Math.ceil(attractionsPerPage / 2);
+		var rows = Math.ceil(packagesPerPage / 2);
 		var html = '';
 		var rightSideIndex;
 		for (var i = 0; i < rows; i++) {
 			rightSideIndex = i + rows;
-			if (i >= attractions.length) {
-				// No attractions left. Abort loop
+			if (i >= packages.length) {
+				// No packages left. Abort loop
 				break;
 			}
 			html += '<tr>';
 			html += '<td>';
-			html += createAttractionLeftDiv(attractions[i]);
+			html += createPackageLeftDiv(packages[i]);
 			html += '</td>';
 			html += '<td>';
-			if (rightSideIndex < attractions.length) {
-				html += createAttractionRightDiv(attractions[rightSideIndex]);
+			if (rightSideIndex < packages.length) {
+				html += createPackageRightDiv(packages[rightSideIndex]);
 			}
 			html += '</td>';
 			html += '</tr>';
@@ -334,50 +228,63 @@
 		$table.html(html);
 	}
 
-	function createAttractionLeftDiv(attraction) {
+	function createPackageLeftDiv(package) {
 		var div = '<div class="attraction-info-box attraction-package-info-box">';
 
-		div += createButtonBox(attraction);
-		div += createAttractionInfoBox(attraction);
-		div += createDistanceBox(attraction);
+		div += createButtonBox(package);
+		div += createPackageInfoBox(package);
+		div += createReservationBox(package);
 
 		div += '</div>';
 		return div;
 	}
 
-	function createAttractionRightDiv(attraction) {
+	function createPackageRightDiv(package) {
 		var div = '<div class="attraction-info-box attraction-package-info-box">';
 
-		div += createDistanceBox(attraction);
-		div += createAttractionInfoBox(attraction);
-		div += createButtonBox(attraction);
+		div += createReservationBox(package);
+		div += createPackageInfoBox(package);
+		div += createButtonBox(package);
 
 		div += '</div>';
 		return div;
 	}
 
-	function createButtonBox(attraction) {
-		var attractionShow = wr+'attractions/show/'+attraction['Attraction']['id'];
+	function createButtonBox(package) {
+		var packageShow = wr+'packages/show/'+package['Package']['id'];
 		var div = '';
 
-		div += '<a href="'+attractionShow+'" class="attraction-button attraction-package-button">';
+		div += '<a href="'+packageShow+'" class="attraction-button attraction-package-button">';
 		div += '<i class="fa fa-search"></i>';
 		div += '</a>';
 
 		return div;
 	}
 
-	function createAttractionInfoBox(attraction) {
-		var tags = attraction['AttractionTag'];
+	function createPackageInfoBox(package) {
+		var tagNames = [];
+		var attractionPackages = package['AttractionPackage'];
+		var attractionTags;
+		var tag;
+		for (var i = 0; i < attractionPackages.length; i++) {
+			attractionTags = attractionPackages[i]['Attraction']['AttractionTag'];
+			for (var j = 0; j < attractionTags.length; j++) {
+				tag = attractionTags[j]['Tag']['name_pt'];
+				// Add tag only if it wasn't added before
+				if (tagNames.indexOf(tag) == -1) {
+					tagNames.push(tag);
+				}
+			}
+		} 
 		var div = '';
 
 		div += '<div class="attraction-info">';
 		div += '<div class="attraction-name">';
-		div += attraction['Attraction']['name'];
+		div += package['Package']['name'];
 		div += '</div>';
 		div += '<div class="attraction-tags-box">';
-		for (var i = 0; i < tags.length; i++) {
-			div += '<span class="package-tag">' + tags[i]['Tag']['name_pt'] + '</span> ';
+		for (var i = 0; i < tagNames.length; i++) {
+			div += '<span class="package-tag">' + tagNames[i] + '</span> ';
 		}
 		div += '</div>';
 		div += '</div>';
@@ -385,22 +292,11 @@
 		return div;
 	}
 
-	function createDistanceBox(attraction) {
+	function createReservationBox(package) {
 		var div = '';
-		var distance = parseInt(attraction['Attraction']['distance']);
 
-		if (distance) {
-			// Convert to km, one decimal place
-			distance = (distance / 1000).toFixed(1).replace('.', ',');
-		}
-
-		div += '<div class="attraction-distance-box">';
-		div += '<div class="attraction-distance-icon">';
-		div += '<img src="'+wr+'img/icone-distancia.png" />';
-		div += '</div>';
-		div += '<div class="attraction-distance">';
-		div += distance + 'km';
-		div += '</div>';
+		div += '<div class="package-reservation-box">';
+		div += 'Botão de Reserva';
 		div += '</div>';
 
 		return div;
@@ -416,22 +312,6 @@
 		$('#attractions-table').show();
 	}
 
-	function setDistanceFilter(distance) {
-		var $chosenDistanceFilter = $('#chosen-distance-filter');
-		$chosenDistanceFilter.empty();
-		if (distance) {
-			// Convert to km, no decimal places
-			kmDistance = parseInt(distance / 1000);
-			
-			var span = '<span class="chosen-filter package-filter attraction-distance-filter" data-distance="'+distance+'">';
-			span += '<i class="fa fa-map-marker"></i> Até '+kmDistance+'km';
-			span += '<span class="remove-filter remove-package-filter remove-distance-filter"><i class="fa fa-times"></i></span>';
-			span += '</span>';
-			$chosenDistanceFilter.append(span);
-		}
-		getAttractions();
-	}
-
 	function addTagToFilter(id, name) {
 		$chosenTagFilters = $('#chosen-tag-filters');
 		// Add tag only if it isn't already in the filter
@@ -441,7 +321,7 @@
 			span += '<span class="remove-filter remove-package-filter remove-tag-filter"><i class="fa fa-times"></i></span>';
 			span += '</span>';
 			$chosenTagFilters.append(span);
-			getAttractions();
+			getPackages();
 		}
 	}
 
