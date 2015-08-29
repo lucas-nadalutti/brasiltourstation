@@ -50,3 +50,21 @@
 	display: inline-block;
 	vertical-align: top;
 }
+
+.package-reservation {
+	width: 90%;
+	height: 100%;
+	// margin: 0 5%;
+	padding: 5%;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 0.8em;
+	color: #ffffff !important;
+	border-radius: 0.3em;
+	background-color: $packages-darker-color;
+	box-shadow: 0 3px 8px -4px #000000;
+
+	.fa {
+		font-size: 2em;
+	}
+}

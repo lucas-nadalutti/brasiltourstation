@@ -1,5 +1,5 @@
 <h1 id="attractions-list-title">
-	Atrações <span id="chosen-distance-filter" ></span><span id="chosen-tag-filters"></span>
+	Pacotes <span id="chosen-distance-filter" ></span><span id="chosen-tag-filters"></span>
 </h1>
 
 <div class="col-md-12 filter-buttons-box">
@@ -81,6 +81,18 @@
 		<table id="attractions-table" hidden></table>
 	</div>
 
+</div>
+
+<div id="package-reservation-form-box" hidden>
+	<?php
+		echo $this->Form->create('Package', array('id' => 'package-reservation-form'));
+		echo $this->Form->input('Package.id', array('id' => 'reservation-form-package-id', 'type' => 'hidden'));
+		echo $this->Form->input('PackageReservation.0.name');
+		echo $this->Form->input('PackageReservation.0.email');
+		echo $this->Form->input('PackageReservation.0.phone');
+		echo $this->Form->submit('Reservar');
+		echo $this->Form->end();
+	?>
 </div>
 
 <script>
@@ -226,6 +238,58 @@
 			html += '</tr>';
 		}
 		$table.html(html);
+
+		// Add qtip to each reservation button
+		$('.package-reservation').each(function() {
+			$(this).qtip({
+				content: {
+					text: $('#package-reservation-form-box').clone(),
+					button: 'close'
+				},
+				style: {
+					classes: 'package-qtip',
+					def: false
+				},
+			    position: {
+			        my: 'top left',
+			        at: 'top right',
+			        adjust: {
+			        	x: 5
+			        }
+			    },
+			    show: {
+			        event: 'click',
+			        solo: true
+			    },
+			    hide: {
+			        event: 'unfocus'
+			    },
+			    events: {
+			    	show: function(event, api) {
+			    		var packageId = api.target.data('package-id');
+			    		var $form = api.tooltip.find('#package-reservation-form');
+			    		$form[0].reset();
+
+			    		// Remove old messages, if any
+			    		$form.find('.reservation-message').remove();
+
+			    		$form.find('#reservation-form-package-id').val(packageId);
+
+			    		// Form must be submitted via AJAX
+			    		$form.submit(function() {
+			    			$.post(
+			    				wr+'packages/createReservation',
+			    				$form.serialize(),
+			    				function(message) {
+			    					$form.append('<div class="reservation-message">'+message+'</div>');
+			    				}
+			    			)
+			    			return false;
+			    		});
+			    	}
+			    }
+			});
+		});
 	}
 
 	function createPackageLeftDiv(package) {
@@ -293,10 +357,13 @@
 	}
 
 	function createReservationBox(package) {
+		var packageId = package['Package']['id'];
 		var div = '';
 
 		div += '<div class="package-reservation-box">';
-		div += 'Botão de Reserva';
+		div += '<a href="javascript:void(0)" class="package-reservation" data-package-id="'+packageId+'">';
+		div += '<i class="fa fa-calendar-plus-o"></i><br>Reservar';
+		div += '</a>';
 		div += '</div>';
 
 		return div;

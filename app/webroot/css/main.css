@@ -484,6 +484,20 @@ darker -> 700
   display: inline-block;
   vertical-align: top; }
 
+.package-reservation {
+  width: 90%;
+  height: 100%;
+  padding: 5%;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 0.8em;
+  color: #ffffff !important;
+  border-radius: 0.3em;
+  background-color: #E64A19;
+  box-shadow: 0 3px 8px -4px #000000; }
+  .package-reservation .fa {
+    font-size: 2em; }
+
 /*
 
 http://www.google.com.br/design/spec/style/color.html#color-color-palette

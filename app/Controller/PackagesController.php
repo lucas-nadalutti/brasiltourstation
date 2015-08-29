@@ -4,7 +4,7 @@ class PackagesController extends AppController {
 
 	public function isAuthorized($user) {
 		if ($user['role'] === 'Cliente') {
-			$allowedActions = array('getPackages', 'packagesList', 'show');
+			$allowedActions = array('getPackages', 'packagesList', 'show', 'createReservation');
 			if (in_array($this->action, $allowedActions)) {
 				return true;
 			}
@@ -28,12 +28,39 @@ class PackagesController extends AppController {
 			'conditions' => array('User.id' => $userId),
 			'recursive' => 1,
 		));
+		$this->set('hotel', $hotel);
+
+		$this->Package->Behaviors->load('Containable');
+		$this->loadModel('Attraction');
+		// $this->Attraction->virtualFields['distance'] = '
+		// 	SELECT distance
+		// 	FROM attractions_hotels
+		// 	WHERE attraction_id = Attraction.id AND hotel_id = '.$hotel['Hotel']['id'].'
+		// ';
 		$package = $this->Package->find('first', array(
 			'conditions' => array('Package.id' => $id),
-			'recursive' => 1,
+			'contain' => array(
+				'Video',
+				'AttractionPackage' => array(
+					// TODO: Investigate if this ordering is failproof
+				    'order' => '(
+				    	SELECT distance
+				    	FROM attractions AS a
+				    	LEFT JOIN attractions_hotels AS ah ON (
+				    		a.id = ah.attraction_id
+				    		AND ah.hotel_id = '.$hotel['Hotel']['id'].'
+				    	)
+				    	WHERE AttractionPackage.attraction_id = a.id
+				    	LIMIT 1
+				    )',
+					'Attraction' => array(
+						// XXX: For some reason, the query above only works with the line below
+						'order' => 'id'
+					)
+				)
+			)
 		));
 
-		$this->set('hotel', $hotel);
 		if ($package['Video']['id']) {
 			$url = $package['Video']['url'];
 			$package['Video']['file_path'] = $this->Package->Video->getFilesPath($url);
@@ -91,29 +118,6 @@ class PackagesController extends AppController {
 			FROM package_reservations
 			WHERE package_id = Package.id
 		';
-		// $packageTagsConditions = '
-		// 	EXISTS (
-		// 		SELECT *
-		// 		FROM attractions_tags as at
-		// 		WHERE Tag.id = at.tag_id AND EXISTS (
-		// 			SELECT *
-		// 			FROM attractions AS a, attractions_packages AS ap
-		// 			WHERE a.id = at.attraction_id
-		// 				AND a.package_id = Package.id
-		// 				AND a.id = ap.attraction_id
-		// 		)
-		// 	)
-		// ';
-		// $this->Package->bindModel(array(
-		// 	'hasMany' => array(
-		// 		'Tag' => array(
-		// 			'className' => 'Tag',
-		// 			'foreignKey' => false,
-		// 			'type' => 'LEFT',
-		// 			'conditions' => $packageTagsConditions,
-		// 		)
-		// 	)
-		// ), false);
 
 		// Sort method
 		if ($sortCriterium === 'popularity') {
@@ -156,6 +160,18 @@ class PackagesController extends AppController {
 			'total' => $total,
 			'packages' => $packages,
 		));
+	}
+
+	public function createReservation() {
+		$this->autoRender = false;
+		if ($this->request->is('ajax')) {
+			if ($this->Package->saveAssociated($this->request->data)) {
+				echo 'Reserva cadastrada com sucesso! Em breve entraremos em contato';
+			}
+			else {
+				echo 'Erro ao cadastrar sua reserva';
+			}
+		}
 	}
 
 }
