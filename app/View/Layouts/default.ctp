@@ -219,7 +219,7 @@
 						'
 						<div class="menu-content-box">
 						<div class="menu-content">
-						<p>' . __('Conheça') . '<br>' . __('seu hotel') . '</p>
+						<p>' . __('Conheça') . '<br>' . __('nosso hotel') . '</p>
 						<p>
 						'.$this->Html->image('menu-icons/hotel.png').'
 						</p>
@@ -332,29 +332,6 @@
 					);
 					echo '</div>';
 
-					echo '<div class="menu-item-link-box car-item">';
-					echo $this->Html->link(
-						'
-						<div class="menu-content-box">
-						<div class="menu-content">
-						<p>' . __('Alugue um') . '<br>' . __('automóvel') . '</p>
-						<p>
-						'.$this->Html->image('menu-icons/alugue-carro.png').'
-						</p>
-						</div>
-						</div>
-						',
-						array(
-							'controller' => 'hotels',
-							'action' => 'hotelInfo',
-						),
-						array(
-							'class' => 'menu-item-link',
-							'escape' => false,
-						)
-					);
-					echo '</div>';
-
 					echo '<div class="menu-item-link-box virtual-store-item">';
 					echo $this->Html->link(
 						'
@@ -409,6 +386,29 @@
 						<p>' . __('Agenda') . '<br>' . __('cultural') . '</p>
 						<p>
 						'.$this->Html->image('menu-icons/agenda-cultural.png').'
+						</p>
+						</div>
+						</div>
+						',
+						array(
+							'controller' => 'hotels',
+							'action' => 'hotelInfo',
+						),
+						array(
+							'class' => 'menu-item-link',
+							'escape' => false,
+						)
+					);
+					echo '</div>';
+
+					echo '<div class="menu-item-link-box car-item">';
+					echo $this->Html->link(
+						'
+						<div class="menu-content-box">
+						<div class="menu-content">
+						<p>' . __('Avalie') . '<br>' . __('nosso hotel') . '</p>
+						<p>
+						'.$this->Html->image('menu-icons/avalie-hotel.png').'
 						</p>
 						</div>
 						</div>

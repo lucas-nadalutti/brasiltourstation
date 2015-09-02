@@ -158,7 +158,7 @@
 		};
 		var map = new google.maps.Map($('#totem-home-map-canvas')[0], mapOptions);
 
-		createMarker(map, latitude, longitude, 'Seu hotel');
+		createMarker(map, latitude, longitude, 'Nosso hotel');
 
 		attractions.map(function(attraction) {
 			latitude = attraction['Attraction']['latitude'];
