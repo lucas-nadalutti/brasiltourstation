@@ -332,28 +332,28 @@
 					);
 					echo '</div>';
 
-					echo '<div class="menu-item-link-box virtual-store-item">';
-					echo $this->Html->link(
-						'
-						<div class="menu-content-box">
-						<div class="menu-content">
-						<p>' . __('Loja') . '<br>' . __('virtual') . '</p>
-						<p>
-						'.$this->Html->image('menu-icons/loja-virtual.png').'
-						</p>
-						</div>
-						</div>
-						',
-						array(
-							'controller' => 'hotels',
-							'action' => 'hotelInfo',
-						),
-						array(
-							'class' => 'menu-item-link',
-							'escape' => false,
-						)
-					);
-					echo '</div>';
+					// echo '<div class="menu-item-link-box virtual-store-item">';
+					// echo $this->Html->link(
+					// 	'
+					// 	<div class="menu-content-box">
+					// 	<div class="menu-content">
+					// 	<p>' . __('Loja') . '<br>' . __('virtual') . '</p>
+					// 	<p>
+					// 	'.$this->Html->image('menu-icons/loja-virtual.png').'
+					// 	</p>
+					// 	</div>
+					// 	</div>
+					// 	',
+					// 	array(
+					// 		'controller' => 'hotels',
+					// 		'action' => 'hotelInfo',
+					// 	),
+					// 	array(
+					// 		'class' => 'menu-item-link',
+					// 		'escape' => false,
+					// 	)
+					// );
+					// echo '</div>';
 
 					echo '<div class="menu-item-link-box olympics-item">';
 					echo $this->Html->link(
@@ -401,7 +401,7 @@
 					);
 					echo '</div>';
 
-					echo '<div class="menu-item-link-box car-item">';
+					echo '<div class="menu-item-link-box hotel-feedback-item">';
 					echo $this->Html->link(
 						'
 						<div class="menu-content-box">
