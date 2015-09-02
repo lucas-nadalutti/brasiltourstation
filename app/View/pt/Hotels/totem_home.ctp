@@ -139,6 +139,10 @@
 ?>
 
 <script>
+	var HOTEL_ICON_URL = wr+'img/maps-icons/icone-hotel.png';
+	var ATTRACTIONS_ICON_URL = wr+'img/maps-icons/icone-atracoes.png';
+	var RESTAURANTS_ICON_URL = wr+'img/maps-icons/icone-onde-comer.png';
+	var SHOPPINGS_ICON_URL = wr+'img/maps-icons/icone-onde-comprar.png';
 
 	$(document).ready(function() {
 		$.get(wr+'attractions/jsonList', function(data) {
@@ -150,6 +154,7 @@
 	});
 
 	function renderMap(attractions) {
+
 		var latitude = $('#latitude').val();
 		var longitude = $('#longitude').val();
 		var mapOptions = {
@@ -158,21 +163,39 @@
 		};
 		var map = new google.maps.Map($('#totem-home-map-canvas')[0], mapOptions);
 
-		createMarker(map, latitude, longitude, 'Nosso hotel');
+		createMarker(map, latitude, longitude, 'Nosso hotel', HOTEL_ICON_URL);
 
 		attractions.map(function(attraction) {
-			latitude = attraction['Attraction']['latitude'];
-			longitude = attraction['Attraction']['longitude'];
-			name = attraction['Attraction']['name'];
-			createMarker(map, latitude, longitude, name);
+			createMarkerFromAttraction(map, attraction);
 		});
 	}
 
-	function createMarker(map, latitude, longitude, title) {
+	function createMarkerFromAttraction(map, attraction) {
+			var attractionIcons = {
+				'Attraction': ATTRACTIONS_ICON_URL,
+				'Restaurant': RESTAURANTS_ICON_URL,
+				'Shopping': SHOPPINGS_ICON_URL,
+			}
+
+			latitude = attraction['Attraction']['latitude'];
+			longitude = attraction['Attraction']['longitude'];
+			name = attraction['Attraction']['name'];
+			iconUrl = attractionIcons[attraction['Attraction']['category']];
+
+
+			createMarker(map, latitude, longitude, name, iconUrl);
+	}
+
+	function createMarker(map, latitude, longitude, title, iconUrl) {
 		var marker = new google.maps.Marker({
 		    position: new google.maps.LatLng(latitude, longitude),
 		    map: map,
-		    title: title
+		    title: title,
+		    icon: {
+		    	url: iconUrl,
+		    	scaledSize: new google.maps.Size(40, 40)
+		    },
+		    animation: google.maps.Animation.DROP
 		});
 
 		var infoWindow = new google.maps.InfoWindow({
