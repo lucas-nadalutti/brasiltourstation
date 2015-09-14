@@ -144,10 +144,10 @@ class HotelsController extends AppController {
 
 	public function sendLifeSign() {
 		$this->autoRender = false;
-		$userHotel = $this->Auth->user();
+		$user = $this->Auth->user();
 		if ($this->request->is('post')) {
-			if ($userHotel && $userHotel['User']['role'] === 'Cliente') {
-				$this->Hotel->id = $userHotel['Hotel']['id'];
+			if ($user && $user['role'] === 'Cliente') {
+				$this->Hotel->id = $user['Hotel']['id'];
 				$this->Hotel->saveField('last_life_sign', date('Y-m-d H:i:s'));
 			}
 			else {
