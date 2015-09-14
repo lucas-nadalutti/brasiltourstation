@@ -3,7 +3,13 @@
 class Hotel extends AppModel {
 
 	public $belongsTo = array('User', 'Video');
-	public $hasMany = 'AttractionHotel';
+	public $hasMany = array(
+		'AttractionHotel',
+		'FeedbackAnswerList',
+		'FeedbackQuestion' => array(
+			'order' => 'FeedbackQuestion.order',
+		),
+	);
 
 	public $validate = array(
 		'address' => array(

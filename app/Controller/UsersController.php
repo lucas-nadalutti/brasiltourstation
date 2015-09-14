@@ -32,7 +32,8 @@ class UsersController extends AppController {
 
 	public function index() {
 		$users = $this->User->find('all', array(
-			'order' => array('User.role', 'User.name')
+			'order' => array('User.role', 'User.name'),
+			'recursive' => 1
 		));
 		$this->set('users', $users);
 	}

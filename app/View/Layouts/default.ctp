@@ -414,8 +414,8 @@
 						</div>
 						',
 						array(
-							'controller' => 'hotels',
-							'action' => 'hotelInfo',
+							'controller' => 'feedback_questions',
+							'action' => 'showQuestionnaire',
 						),
 						array(
 							'class' => 'menu-item-link',

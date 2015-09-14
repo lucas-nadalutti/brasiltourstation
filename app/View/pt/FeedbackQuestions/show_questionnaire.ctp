@@ -1,0 +1,1 @@
+<h1>Avalie nosso hotel</h1>
