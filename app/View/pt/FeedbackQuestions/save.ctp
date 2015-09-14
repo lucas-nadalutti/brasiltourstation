@@ -8,10 +8,12 @@
 	echo $this->Form->input('question', array('label' => 'Pergunta:'));
 
 	// TODO: Use javascript to make option adding/removing dynamic
-	echo $this->Form->input('FeedbackQuestionOption.0.question_option', array('label' => 'Opção 1:'));
-	echo $this->Form->input('FeedbackQuestionOption.1.question_option', array('label' => 'Opção 2:'));
-	echo $this->Form->input('FeedbackQuestionOption.2.question_option', array('label' => 'Opção 3:'));
-	echo $this->Form->input('FeedbackQuestionOption.3.question_option', array('label' => 'Opção 4:'));
+	if (isset($question)) {
+		foreach ($question['FeedbackQuestionOption'] as $i => $option) {
+			echo $this->Form->input('FeedbackQuestionOption.'.$i.'.id', array('type' => 'hidden'));
+			echo $this->Form->input('FeedbackQuestionOption.'.$i.'.question_option', array('label' => 'Opção:', 'data-id' => $option['id']));
+		}
+	}
 
 	echo $this->Form->submit('Cadastrar');
 

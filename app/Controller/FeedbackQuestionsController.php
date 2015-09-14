@@ -26,7 +26,7 @@ class FeedbackQuestionsController extends AppController {
 		$this->set('hotel', $hotel);
 	}
 
-	public function create($id) {
+	public function save($hotelId, $questionId = null) {
 		if ($this->request->is('post')) {
 			if ($this->FeedbackQuestion->saveAll($this->request->data)) {
 				$this->Session->setFlash(
@@ -35,7 +35,7 @@ class FeedbackQuestionsController extends AppController {
 					array('class' => 'post-success message')
 				);
 				return $this->redirect(
-					array('action' => 'index', $id)
+					array('action' => 'index', $hotelId)
 				);
 			}
 			$this->Session->setFlash(
@@ -47,10 +47,19 @@ class FeedbackQuestionsController extends AppController {
 		$this->loadModel('Hotel');
 		$this->Hotel->Behaviors->load('Containable');
 		$hotel = $this->Hotel->find('first', array(
-			'conditions' => array('Hotel.id' => $id),
+			'conditions' => array('Hotel.id' => $hotelId),
 			'contain' => 'User',
 		));
 		$this->set('hotel', $hotel);
+		if ($questionId) {
+			$this->FeedbackQuestion->Behaviors->load('Containable');
+			$question = $this->FeedbackQuestion->find('first', array(
+				'conditions' => $questionId,
+				'contain' => array('FeedbackQuestionOption'),
+			));
+			$this->request->data = $question;
+			$this->set('question', $question);
+		}
 	}
 
 	public function showQuestionnaire() {

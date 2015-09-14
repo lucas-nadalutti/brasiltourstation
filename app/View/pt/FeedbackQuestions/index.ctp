@@ -4,7 +4,11 @@
 
 	echo '<ul>';
 	foreach ($hotel['FeedbackQuestion'] as $question) {
-		echo '<li>' . $question['question'];
+		echo '<li>' . $question['question'] . ' ';
+		echo $this->Html->link(
+			'Editar',
+			array('action' => 'save', $hotel['Hotel']['id'], $question['id'])
+		);
 		echo '<ul>';
 
 		foreach ($question['FeedbackQuestionOption'] as $option) {
@@ -18,7 +22,7 @@
 	echo '<div>';
 	echo $this->Html->link(
 		'Cadastrar pergunta',
-		array('action' => 'create', $hotel['Hotel']['id'])
+		array('action' => 'save', $hotel['Hotel']['id'])
 	);
 	echo '</div>';
 
