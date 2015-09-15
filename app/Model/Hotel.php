@@ -7,7 +7,7 @@ class Hotel extends AppModel {
 		'AttractionHotel',
 		'FeedbackAnswerList',
 		'FeedbackQuestion' => array(
-			'order' => 'FeedbackQuestion.order',
+			'order' => 'FeedbackQuestion.order_index',
 		),
 	);
 
