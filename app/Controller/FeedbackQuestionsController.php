@@ -27,7 +27,7 @@ class FeedbackQuestionsController extends AppController {
 	}
 
 	public function save($hotelId, $questionId = null) {
-		if ($this->request->is('post')) {
+		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->FeedbackQuestion->saveAll($this->request->data)) {
 				$this->Session->setFlash(
 					__('Pergunta cadastrada com sucesso'),
