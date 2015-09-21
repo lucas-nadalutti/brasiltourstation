@@ -67,6 +67,7 @@
 			var newOrderIndex = parseInt(
 				$lastOption.parent().find('.question-option-order-input').first().val()
 				|| newIndex
+				|| 0
 			) + 1;
 
 			var $newOption = $('<div class="input"></div>');
