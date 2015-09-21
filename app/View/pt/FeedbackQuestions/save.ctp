@@ -63,11 +63,16 @@
 
 		$('#add-question').click(function() {
 			var $lastOption = $('.question-option-input').last();
-			var newIndex = parseInt($lastOption.data('index')) + 1;
+			var newIndex;
+			if ($lastOption) {
+				newIndex = parseInt($lastOption.data('index')) + 1;
+			}
+			else {
+				newIndex = 1;
+			}
 			var newOrderIndex = parseInt(
 				$lastOption.parent().find('.question-option-order-input').first().val()
 				|| newIndex
-				|| 0
 			) + 1;
 
 			var $newOption = $('<div class="input"></div>');
