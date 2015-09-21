@@ -62,16 +62,16 @@
 	$(document).ready(function() {
 
 		$('#add-question').click(function() {
-			var $lastOption = $('.question-option-input').last();
+			var $options = $('.question-option-input');
 			var newIndex;
-			if ($lastOption) {
-				newIndex = parseInt($lastOption.data('index')) + 1;
+			if ($options.length > 0) {
+				newIndex = parseInt($options.last().data('index')) + 1;
 			}
 			else {
 				newIndex = 0;
 			}
 			var newOrderIndex = parseInt(
-				$lastOption.parent().find('.question-option-order-input').first().val()
+				$options.last().parent().find('.question-option-order-input').first().val()
 				|| newIndex
 			) + 1;
 
