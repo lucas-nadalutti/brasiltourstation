@@ -68,7 +68,7 @@
 				newIndex = parseInt($lastOption.data('index')) + 1;
 			}
 			else {
-				newIndex = 1;
+				newIndex = 0;
 			}
 			var newOrderIndex = parseInt(
 				$lastOption.parent().find('.question-option-order-input').first().val()
