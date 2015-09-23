@@ -71,6 +71,23 @@ class AppSchema extends CakeSchema {
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'InnoDB')
 	);
 
+	public $currency_quotes = array(
+		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
+		'quote_date' => array('type' => 'date', 'null' => false, 'default' => null),
+		'dollar' => array('type' => 'decimal', 'null' => true, 'default' => null, 'length' => '10,4', 'unsigned' => false),
+		'dollar_variation' => array('type' => 'decimal', 'null' => true, 'default' => null, 'length' => '5,2', 'unsigned' => false),
+		'euro' => array('type' => 'decimal', 'null' => true, 'default' => null, 'length' => '10,4', 'unsigned' => false),
+		'euro_variation' => array('type' => 'decimal', 'null' => true, 'default' => null, 'length' => '5,2', 'unsigned' => false),
+		'pound' => array('type' => 'decimal', 'null' => true, 'default' => null, 'length' => '10,4', 'unsigned' => false),
+		'pound_variation' => array('type' => 'decimal', 'null' => true, 'default' => null, 'length' => '5,2', 'unsigned' => false),
+		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
+		'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
+		'indexes' => array(
+			'PRIMARY' => array('column' => 'id', 'unique' => 1)
+		),
+		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'InnoDB')
+	);
+
 	public $feedback_answer_lists = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 10, 'unsigned' => true, 'key' => 'primary'),
 		'hotel_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 10, 'unsigned' => true, 'key' => 'index'),

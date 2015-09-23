@@ -14,18 +14,14 @@
 			<div class="col-md-8">
 				<h4 class="home-info-box-title">Cotações atuais</h4>
 				<?php
-					$dollarQuote = $quotes['dollar']['sale'];
-					$euroQuote = $quotes['euro']['sale'];
-					$poundQuote = $quotes['pound']['sale'];
-
 					echo '<p class="quote-info">';
-					echo '<span class="quote-symbol"><i class="fa fa-usd"></i></span> ' . $dollarQuote;
+					echo '<span class="quote-symbol"><i class="fa fa-usd"></i></span> ' . $quotes['dollar'];
 					echo '</p>';
 					echo '<p class="quote-info">';
-					echo '<span class="quote-symbol"><i class="fa fa-eur"></i></span> ' . $euroQuote;
+					echo '<span class="quote-symbol"><i class="fa fa-eur"></i></span> ' . $quotes['euro'];
 					echo '</p>';
 					echo '<p class="quote-info">';
-					echo '<span class="quote-symbol"><i class="fa fa-gbp"></i></span> ' . $poundQuote;
+					echo '<span class="quote-symbol"><i class="fa fa-gbp"></i></span> ' . $quotes['pound'];
 					echo '</p>';
 				?>
 			</div>

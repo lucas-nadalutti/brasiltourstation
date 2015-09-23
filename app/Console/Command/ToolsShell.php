@@ -1,6 +1,7 @@
 <?php
 
 class ToolsShell extends AppShell {
+
     public function main() {
         if (!$this->args) {
         	$this->stdout->styles('cyan', array('text' => 'cyan'));
@@ -84,4 +85,5 @@ class ToolsShell extends AppShell {
         $this->out('<red>Invalid command:</red> ' . $arg);
         $this->out('');
     }
+    
 }

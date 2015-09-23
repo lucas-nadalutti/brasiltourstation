@@ -3,18 +3,18 @@
 // XXX: Manually loading since CakePHP 2.x doesn't support namespaces
 use Masterminds\HTML5;
 
-App::uses('Component', 'Controller');
+class WebQueryTask extends Shell {
 
-class WebQueryComponent extends Component {
+    public $uses = array('User');
 
-    public function getCurrencyQuotes() {
+    public function execute() {
         $currencyParser = new CurrencyParser();
         $quotes = $currencyParser->getQuotes();
         // TODO: Send an email in case of errors
         return $quotes;
     }
-
 }
+
 
 class CurrencyParser {
 
@@ -50,20 +50,20 @@ class CurrencyParser {
         $purchase = (float) str_replace(',', '.', $tds->item(1)->textContent);
         $sale = (float) str_replace(',', '.', $tds->item(2)->textContent);
         $variation = (float) str_replace(',', '.', $tds->item(3)->textContent);
-        $latestUpdate = $tds->item(4)->textContent;
+        $latestUpdate = date_create_from_format('d/m - H:i', $tds->item(4)->textContent)->getTimestamp();
 
         // Stringify values
-        $purchase = 'R$ ' . number_format($purchase, 2, ',', '.');
-        $sale = 'R$ ' . number_format($sale, 2, ',', '.');
-        $formattedVariation = number_format($variation, 2, ',', '.') . '%';
-        if ($variation > 0) {
-            $variation = '+' . $formattedVariation;
-        }
-        else {
-            $variation = $formattedVariation;
-        }
-        $latestUpdateTimestamp = date_create_from_format('d/m - H:i', $latestUpdate)->getTimestamp();
-        $latestUpdate = date('d/m - H:i', $latestUpdateTimestamp);
+        // $purchase = 'R$ ' . number_format($purchase, 2, ',', '.');
+        // $sale = 'R$ ' . number_format($sale, 2, ',', '.');
+        // $formattedVariation = number_format($variation, 2, ',', '.') . '%';
+        // if ($variation > 0) {
+        //     $variation = '+' . $formattedVariation;
+        // }
+        // else {
+        //     $variation = $formattedVariation;
+        // }
+        // $latestUpdateTimestamp = date_create_from_format('d/m - H:i', $tds->item(4)->textContent)->getTimestamp();
+        // $latestUpdate = date('d/m - H:i', $latestUpdateTimestamp);
 
         return array(
             'purchase' => $purchase,

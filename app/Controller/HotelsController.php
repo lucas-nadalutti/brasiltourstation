@@ -20,6 +20,14 @@ class HotelsController extends AppController {
 	}
 
 	public function totemHome() {
+		// Quotes
+		$this->loadModel('CurrencyQuote');
+		$currencyQuotesObj = $this->CurrencyQuote->find('first', array(
+			'order' => 'quote_date DESC'
+		));
+		$this->set('quotes', $currencyQuotesObj['CurrencyQuote']);
+
+		// Weather forecast
 		$userId = $this->Auth->user('id');
 		$userHotel = $this->Hotel->User->find('first', array(
 			'conditions' => array('User.id' => $userId),
@@ -87,8 +95,6 @@ class HotelsController extends AppController {
 		}
 		curl_close($curl);
 
-		//$this->set('quotes', json_decode($quotes, true));
-		$this->set('quotes', $this->WebQuery->getCurrencyQuotes());
 		$this->set('forecastData', $forecastData);
 	}
 
